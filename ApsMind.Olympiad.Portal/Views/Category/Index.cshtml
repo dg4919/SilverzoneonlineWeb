@@ -1,0 +1,161 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.Category
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(ViewBag.ListCategory, rowsPerPage: 10);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+}
+<div class="mar">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Add Category</h2>
+
+            </div>
+        </div>
+    </div>
+
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.Raw(ViewBag.Message)
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Select&nbsp;Category <abbr title="required">*</abbr></label>
+                        <div class="col-md-5">
+                            <select id="Category" class="form-control" name="Category"></select>
+                        </div>
+                        <div class="col-sm-5">
+                            <button id="btnResetCategory" type="button" class="btn btn-warning">Clear</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Selected&nbsp;Category<abbr title="required">*</abbr></label>
+                        <div class="col-md-5">
+                            @Html.HiddenFor(model => model.CategoryId)
+                            <input type="hidden" id="ParentCategoryId" name="ParentCategoryId" value="@ViewBag.ParentCategoryId" onclick='fillSelectedPath(this.value());' />
+                            <span id="showSelected" style="font-size:larger;font-weight:100;">Root</span>
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Category&nbsp;Name<abbr title="required">*</abbr></label>
+                        <div class="col-md-5">
+                            @Html.TextBoxFor(model => model.CategoryName, new { @maxlength = "50", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryName)
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Category &nbsp;Type<abbr title="required">*</abbr></label>
+                        <div class="col-md-5">
+                            @Html.DropDownListFor(model => model.CategoryTypeId, new SelectList(ViewBag.CategoryTypeName, "KeywordValue", "KeywordText"), "--Select Category Type--", new { @maxlength = "50", @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryTypeId)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+                        <div class="col-md-2 col-sm-3 col-xs-9">
+                            @Html.EditorFor(model => model.IsActive)
+                            @Html.ValidationMessageFor(model => model.IsActive)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-offset-5 col-md-1">
+                    <input type="submit" value="Save" class="btn btn-danger" name="command" />
+                </div>
+                <div class=" col-md-4">
+                    <input type="submit" value="Search" class="btn btn-green" name="Command" />
+                </div>
+            </div>
+            <br />
+        </div>
+    }
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="cstmTbl">
+                @grid.GetHtml(
+                    tableStyle: "table table-bordered", // applying style on grid
+        fillEmptyRows: false,
+                        //show empty row when there is only one record on page to it will display all empty rows there.
+        headerStyle: "header", //applying style.
+            footerStyle: "grid-footer", //applying style.
+                mode: WebGridPagerModes.All, //paging to grid
+        firstText: "<< First",
+        previousText: "< Prev",
+        nextText: "Next >",
+        lastText: "Last >>",
+
+        columns: new[]  // colums in grid
+        {
+            grid.Column("CategoryId","Category Id"),
+              grid.Column("CategoryName", "Category Name"),
+              grid.Column("Sub Category Name",
+        format: (item) =>
+        {
+         return Html.Raw(
+             @item.SubCateGoryName == null ? "--" : item.SubCateGoryName
+
+
+             );
+        }
+        ),
+                       grid.Column("CategoryTypeName", "Category Type Name"),
+                       grid.Column("IsActive","Status"),
+                        grid.Column("CreatedBy","Created By"),
+                grid.Column("CreatedOn","Created On",format: (item) => TimeZoneInfo.ConvertTime(item.CreatedOn, est).ToString("dd MMM yyyy hh:mm tt")),
+                grid.Column("Edit",format: (item) => @Html.ActionLink("Edit", "Index", new {ParentId=item.CategoryId}), style: "webGridIcon"),
+                //, CategoryId = item.CategoryId
+
+
+        })
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @*<script type="text/javascript">
+        function findExistingCategoryId(ParentId) {
+            alert('hi');
+            //alert(ParentId);
+            var id = ParentId;
+            // alert(id);
+            var url = "/Category/Index?ParentId=" + ParentId;
+            $.ajax({
+                url: url,
+                type: "Get",
+                success: function (Result) {
+                    document.getElementById["showSelected"].innerHtml = ""
+
+                    //window.location.href = '/Category/Index?ParentId=' + id;
+
+                }
+            });
+        }
+    </script>*@
+
+    <script src="~/assets/OlympaidCategory/create_category.js"></script>
+
+}

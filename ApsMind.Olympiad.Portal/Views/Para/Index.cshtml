@@ -1,0 +1,134 @@
+﻿@*@model IEnumerable<ApsMind.Olympiad.Framework.Entity.Para>*@
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 15);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+}
+<div class="mar">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Paragraph Index</h2>
+
+            </div>
+        </div>
+    </div>
+    @if (TempData["Message"] != null)
+    {
+        <div>
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>@TempData["Message"].
+            </div>
+            @*<span style="text-align:center; color:green;">@TempData["Message"]</span>*@
+        </div>
+    }
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        <div class="page-header col-sm-12">
+            <div class="row srchQuestion">
+                <div class="col-lg-3">
+                    <input type="text" name="ParaName" value="@ViewBag.ParaName" placeholder="Search for Para Name..." class="form-control">
+                </div>
+
+                <div class="col-lg-3">
+
+                    <input type="text" id="StartDate" name="StartDate" placeholder="Search for From Date..." value="@ViewBag.StartDate" class="form-control">
+                </div>
+                <div class="col-lg-3">
+
+                    <input type="text" id="EndDate" name="EndDate" placeholder="Search for Till Date..." value="@ViewBag.EndDate" class="form-control">
+                </div>
+
+                <div class="col-lg-3">
+
+                    <button type="submit" class="btn btn-primary">Search Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <span style="color:black">Total Para Graph:-</span>
+                <span style="font-size:large;color:black">@ViewBag.TotalParaGraph</span>
+            </div>
+        </div>
+        <br />
+    }
+    @Html.Raw(ViewBag.Message)
+    <div class="col-sm-12">
+        <div class="cstmTbl">
+            @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                    //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+         grid.Column("ParaId", "Id"),
+
+            grid.Column("ParaText","Para Graph"),
+            grid.Column("IsActive","Status"),
+            grid.Column("CreatedBy","Created By"),
+            grid.Column("CreatedOn","Created On",format: (item) => TimeZoneInfo.ConvertTime(item.CreatedOn, est).ToString("dd MMM yyyy hh:mm tt")),
+             grid.Column("Image",
+          format: (item) =>
+        {
+         return Html.Raw(
+                @item.ImageUrl == null ? "" : string.Format("<img src=\"{0}\" alt=\"Image\" width='100px' height='100px'/>", Url.Content(@item.ImageUrl)
+             )
+             );
+        }),
+             grid.Column("Edit",format: (item) => @Html.ActionLink("Edit", "Create", new { ParaId = item.ParaId }), style: "webGridIcon"),
+
+
+
+    })
+
+        </div>
+    </div>
+</div>
+@section Scripts
+     {
+
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+
+<script src="~/Scripts/jquery.datetimepicker.js"></script>
+<script>
+    $('#StartDate').datetimepicker(
+                    {
+                        datepicker: true,
+                        timepicker: true,
+                        //format: 'd M, Y',
+                        format: 'd M Y H:i',
+                        // minDate: 0,
+                        //MinTime:30,
+                        step: 30
+                    });
+</script>
+<script>
+    $('#EndDate').datetimepicker(
+                    {
+                        datepicker: true,
+                        timepicker: true,
+                        //format: 'd M, Y',
+                        format: 'd M Y H:i',
+
+                        //MinTime:30,
+                        step: 30
+                    });
+</script>
+
+    }

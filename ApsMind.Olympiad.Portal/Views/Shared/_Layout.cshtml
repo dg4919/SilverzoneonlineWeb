@@ -1,0 +1,290 @@
+﻿@{
+    var CUser = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs
+       ================================================== -->
+    <meta charset="utf-8">
+    <title>:: SilverZone Olympiads ::</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+       ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+       ================================================== -->
+    <link href="~/nlook/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- web font  -->
+
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/animate.css">
+
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/nekoAnim.css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/font-icons/custom-icons/css/custom-icons.css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/font-icons/custom-icons/css/custom-icons-ie7.css">
+    <!-- Custom css -->
+
+    <link href="~/nlook/css/layout.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/blue.css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/font-awesome.min.css">
+
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+    <script src="~/nlook/js/modernizr-2.6.1.min.js"></script>
+
+    <link rel="shortcut icon" href="~/nlook/images/icon.png">
+    <link rel="apple-touch-icon" href="~/nlook/images/icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/nlook/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/nlook/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/nlook/images/apple-touch-icon-144x144.png">
+
+</head>
+<body data-spy="scroll" data-target="#scrollTarget" data-offset="150" class="activateAppearAnimation" style="overflow: visible;padding-top:0px;">
+    <!-- Primary Page Layout
+       ================================================== -->
+    <!-- Preloader -->
+    @*<div id="preloader">
+        <div id="status">
+            <img src="~/nlook/images/theme-pics/loader.gif" alt="" />
+            <h1 class="noSubtitle" style="color:#4FAFC2;">Welcome Silverzone Mentor</h1>
+        </div>
+    </div>*@
+    <!-- Preloader -->
+    <!-- Primary Page Layout
+       ================================================== -->
+    <!-- Wrapper -->
+    <div id="wrapper" class="toggled">
+        <!-- header -->
+        <div class="col-md-12">
+            <div class="row ">
+                <header id="mainHeader" class="navbar-fixed-top" role="banner">
+                    <div class="" style="padding-right:20px;">
+                        <nav class="navbar navbar-default scrollMenu " role="navigation">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+
+                                <button type="button" class="hamburger animated fadeInLeft is-closed" data-toggle="offcanvas">
+                                    <span class="hamb-top"></span>
+                                    <span class="hamb-middle"></span>
+                                    <span class="hamb-bottom"></span>
+                                </button>
+                                <a class="navbar-brand" href="index.html" style="margin-left:50PX;">
+                                    <img src="~/nlook/images/sm-logo.png" alt="silverzone" />
+                                </a>
+                            </div>
+                            <div class="collapse navbar-collapse navbar-ex1-collapse" id="scrollTarget">
+                                <ul class="nav navbar-nav pull-right">
+                                    <li class="active"><a href="/Account/Login"><i class="icon-home-outline"></i>Go to Home</a> </li>
+                                    <!-- <li class="dropdown">
+                                    <a href="#contact" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-mail"></i>Support<span class="caret"></span></a>
+
+                                     <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"><i class="fa fa-envelope"></i> Email</a></li>
+                                                <li><a href="#"><i class="fa fa-comments"></i> Chat</a></li>
+                                                <li><a href="#"><i class="fa fa-phone"></i> Phone Support</a></li>
+                                                <li class="divider"></li>
+                                                <li class="active"><a href="#"><i class="fa fa-users"></i> Meeting support</a></li></ul>
+
+                                    </li>-->
+
+
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+            </div>
+        </div>
+        <!-- header -->
+        @if(CUser!=null)
+        { 
+        <section id="dashboard">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <div class="overlay" style="display: none;"></div>
+                    <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                        <ul class="nav sidebar-nav">
+
+                            <li class="dropdown" id="mainHeader" style=" background-color: #4FAFC2">
+                                <a id="user-profile" href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://lorempixel.com/25/25/people/9/" class="img-responsive img-thumbnail img-circle"> @CUser.UserName</a>
+                                <ul class="dropdown-menu " role="menu" style=" background-color: #80750f">
+                                    <li><a href="#" style="text-right">Profile edition</a></li>
+                                    <li><a href="#">Admin</a></li>
+                                    <li><a href="/Account/logout">Logout</a></li>
+                                </ul>
+
+                            </li>
+                            <li class="active"><a href="/Home/Index"><i class="fa fa-dashboard"></i><span class="nav-label">Dashboard</span></a></li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> User profile<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/UserProfile/Create">Add User profile</a></li>
+                                    <li><a href="/UserProfile/Index">View User profile</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/Category/Index"><i class="fa fa-bookmark-o"></i>Category<span class="caret"></span></a></li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i>Subject<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Subject/Create">Add Subject</a></li>
+                                    <li><a href="/Subject/Index">View Subject</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i>Student Class<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/StudentClass/Create">Add StudentClass</a></li>
+                                    <li><a href="/StudentClass/Index">View StudentClass</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i>Chapter<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Chapter/Create">Add Chapter</a></li>
+                                    <li><a href="/Chapter/Index">View Chapter</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> Package<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Quiz/CreatePackage">Add Package</a></li>
+                                    <li><a href="/Package/Index">View Package</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> Test Paper<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Quiz/Create">Add Test Paper</a></li>
+                                    <li><a href="/Quiz/Index">View Test Paper</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/QuizPaperMapping/Create"><i class="fa fa-bookmark-o"></i><span class="nav-label">Test Paper Mapping</span></a></li>
+                            <li><a href="/Qusetion/Index"><i class="fa fa-bookmark-o"></i><span class="nav-label">Question View</span></a></li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> para graph<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Para/Create">Add para graph</a></li>
+                                    <li><a href="/Para/Index">View para graph</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> Instruction<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Instruction/Create">Add Instruction</a></li>
+                                    <li><a href="/Instruction/Index">View Instruction</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/FeedBack/Index"><i class="fa fa-bookmark-o"></i><span class="nav-label">FeedBack View</span></a></li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> Report<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+
+                                    <li><a href="/UserReportDeviceType/IPhoneUser">User</a></li>
+                                    <li><a href="/AccountReport/IPhoneUser">Account</a></li>
+                                    <li><a href="/QuizReport/Index">Test Paper</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-submenu">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle"><i class="fa fa-file-text-o"></i> Notification<span class="caret"></span></a>
+                                <ul class="list-unstyled dropdown-menu">
+                                    <li><a href="/Notification/Create">Add Notification</a></li>
+                                    <li><a href="/Notification/Index">View Notification</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    @RenderSection("featured", required: false)
+                    @RenderBody()
+
+                </div>
+
+
+
+
+                <section id="footerRights">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p>Copyright © 2017 <a href="http://www.silverzone.org/" target="blank">silverzone olympiads</a> / All rights reserved.</p>
+                            </div>
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+                                <ul class="socialNetwork pull-right">
+                                    <li>
+                                        <a href="https://www.facebook.com/Olympiads.Asia" target="_blank" class="tips" title="follow me on Facebook"><i class="icon-facebook-1 iconRounded"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://twitter.com/SZOlympiads" class="tips" title="follow me on Twitter" target="_blank"><i class="icon-twitter-bird iconRounded"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://plus.google.com/u/0/+SilverZoneFoundation" class="tips" target="_blank" title="follow me on Google+"><i class="icon-gplus-1 iconRounded"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/in/silverzone-foundation-042a77128/" class="tips" target="_blank" title="follow me on Linkedin"><i class="icon-linkedin-1 iconRounded"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/channel/UCVb34obnlNSQh8-vySH0Ssw" class="tips" target="_blank" title="follow me on youtube"><i class="icon-youtube iconRounded"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- End footer -->
+            </div>
+        </section>
+        }
+    </div>
+
+    <script type="text/javascript" src="~/nlook/js/jquery.1.10.2.min.js"></script>
+
+    <!-- third party plugins  -->
+    <script type="text/javascript" src="~/nlook/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/nlook/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="~/nlook/js/jquery.magnific-popup.min.js"></script>
+
+    <script type="text/javascript" src="~/nlook/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="~/nlook/js/jquery.pageslide-custom.js"></script>
+    <!-- Custom  -->
+    <script type="text/javascript" src="~/nlook/js/custom.js"></script>
+
+    
+    <script>
+        $(document).ready(function () {
+            var trigger = $('.hamburger'),
+                overlay = $('.overlay'),
+                isClosed = true;
+
+            function buttonSwitch() {
+
+                if (isClosed === true) {
+                    overlay.hide();
+                    trigger.removeClass('is-open');
+                    trigger.addClass('is-closed');
+                    isClosed = true;
+                } else {
+                    overlay.show();
+                    trigger.removeClass('is-closed');
+                    trigger.addClass('is-open');
+                    isClosed = true;
+                }
+            }
+
+            trigger.click(function () {
+                buttonSwitch();
+            });
+
+            $('[data-toggle="offcanvas"]').click(function () {
+                $('#wrapper').toggleClass('toggled');
+            });
+        });
+    </script>
+    @Scripts.Render("/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    <!-- Custom  -->
+</body>
+</html>

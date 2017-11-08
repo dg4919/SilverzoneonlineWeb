@@ -1,0 +1,111 @@
+﻿@*@model IEnumerable<ApsMind.Olympiad.Framework.Entity.Subject>*@
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 15);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+}
+
+<h4 class="modal-title">Subject Index</h4>
+<br />
+<br />
+@if (TempData["Message"] != null)
+{
+    <div>
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong>@TempData["Message"].
+        </div>
+        @*<span style="text-align:center; color:green;">@TempData["Message"]</span>*@
+    </div>
+}
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div class="page-header col-sm-12">
+        <div class="row srchQuestion">
+            <div class="col-lg-8">
+                <input type="text" name="SubjectName" value="@ViewBag.SubjectName" placeholder="Search for Subject..." class="form-control">
+            </div>
+
+           
+            <div class="col-lg-4">
+
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <span style="color:black">Total Subject:-</span>
+            <span style="font-size:large;color:black">@ViewBag.TotalSubject</span>
+        </div>
+    </div>
+    <br />
+}
+@Html.Raw(ViewBag.Message)
+<div class="col-sm-12">
+    <div class="cstmTbl">
+        @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+         grid.Column("SubjectId", "Id"),
+
+            grid.Column("SubjectName","Subject"),
+            grid.Column("Class","Class"),
+            grid.Column("IsActive","Status"),
+                        
+             grid.Column("Edit",format: (item) => @Html.ActionLink("Edit", "Edit", new { SubjectId = item.SubjectId }), style: "webGridIcon"),
+
+
+
+    })
+
+    </div>
+</div>
+@section Scripts
+     {
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script>
+    $('#StartDate').datetimepicker(
+                    {
+                        datepicker: true,
+                        timepicker: true,
+                        //format: 'd M, Y',
+                        format: 'd M Y H:i',
+                        // minDate: 0,
+                        //MinTime:30,
+                        step: 30
+                    });
+    </script>
+    <script>
+    $('#EndDate').datetimepicker(
+                    {
+                        datepicker: true,
+                        timepicker: true,
+                        //format: 'd M, Y',
+                        format: 'd M Y H:i',
+
+                        //MinTime:30,
+                        step: 30
+                    });
+    </script>
+
+}

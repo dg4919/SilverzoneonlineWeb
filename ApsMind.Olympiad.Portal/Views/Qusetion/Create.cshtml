@@ -1,0 +1,328 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.Question
+
+@{
+    ViewBag.Title = "Create";
+    int Count = 0;
+    int AnswerIndex = -1;
+    int OptionCount = 0;
+    var RoleID = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.RoleId;
+
+}
+
+<div class="mar">
+
+    <span>
+        <div id='myModal' class='modal fade in'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id='myModalContent' style="padding-left: 10px">
+                        @Html.Partial("AddParaGraph", new ViewDataDictionary { });
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Edit Question</h2>
+
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Create", "Qusetion", FormMethod.Post, new { enctype = "Multipart/form-data" }))
+    {
+        <input type="hidden" value="@ViewBag.QuizID" name="QuizID" />
+        @Html.Raw(ViewBag.Message)
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.QuestionId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ParaId, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <select name="ParaId" class="form-control">
+                        <option value="0" selected>--Select--</option>
+                        @foreach (var item in ViewBag.ParaId)
+                        {
+                            <option value="@item.ParaId"  @( item.ParaId == Model.ParaId ? "Selected" : "")>@item.ParaText</option>
+                        }
+                    </select>
+
+                    @*@Html.DropDownList("ParaId",new SelectList(ViewBag.ParaId, "ParaId", "ParaText",Model.ParaId), "--Select--", new { @class = "form-control" })
+                    *@
+                    @Html.ValidationMessageFor(model => model.ParaId)
+
+                </div>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChapterId, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <select name="ChapterId" class="form-control">
+                        <option value="0" selected>--Select--</option>
+                        @foreach (var item in ViewBag.ChapterId)
+                        {
+                            <option value="@item.ChapterId" @( item.ChapterId == Model.ChapterId ? "Selected" : "")>@item.ChapterName</option>
+                        }
+                    </select>
+
+                   
+                    @Html.ValidationMessageFor(model => model.ChapterId)
+
+                </div>
+
+            </div>
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.TopicId, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <select name="ParaId" class="form-control">
+                        <option value="0" selected>--Select--</option>
+                        @foreach (var item in ViewBag.TopicId)
+                        {
+                            <option value="@item.TopicId" @( item.TopicId == Model.TopicId ? "Selected" : "")>@item.TopicName</option>
+                        }
+                    </select>
+
+                   
+                    @Html.ValidationMessageFor(model => model.TopicId)
+
+                </div>
+
+            </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuestionText, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    @Html.TextAreaFor(model => model.QuestionText, new { @class = "form-control", @maxlength = "4000" })
+                    @Html.ValidationMessageFor(model => model.QuestionText)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuestionLevel, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <select name="QuestionLevel" class="form-control">
+                        <option value="0" selected>--Select--</option>
+                        @foreach (var item in ViewBag.QuestionLevel1)
+                        {
+                            <option value="@item.KeywordValue" @( item.KeywordValue == Model.QuestionLevel ? "Selected" : "")>@item.KeywordText</option>
+                        }
+                    </select>
+
+                    @*@Html.DropDownListFor(model => model.QuestionLevel, new SelectList(ViewBag.QuestionLevel1, "KeywordValue", "KeywordText"), "--Select--", new { @class = "form-control" })*@
+                    @Html.ValidationMessageFor(model => model.QuestionLevel)
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mark, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    @Html.TextBoxFor(model => model.Mark, new { @class = "form-control", @maxlength = "10" })
+                    @Html.ValidationMessageFor(model => model.Mark)
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EstimatedTimeInSecond, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    @Html.TextBoxFor(model => model.EstimatedTimeInSecond, new { @class = "form-control", @maxlength = "10" })
+                    @Html.ValidationMessageFor(model => model.EstimatedTimeInSecond)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-10">
+
+                    @if (Model.ImageUrl == null)
+                    {
+                        <img src="~/Images/question_mark1.jpeg" id="hdnquestionimage" style="width:50px;height:50px; " class="imgQuestion" alt="Place your image here">
+
+                    }
+                    else
+                    {
+                        <input type="hidden" value="@Model.ImageUrl" name="ImageUrl" id="ImageUrl" />
+                        <img src="@Model.ImageUrl" alt="" class="imgQuestion" id="hdnquestionimage" style="border: 3px solid black;height:50px;width:50px" />
+                    }
+                    @*@if (Model.ImageUrl != null)
+                    {
+
+                        <input type="hidden" value="@Model.ImageUrl" name="ImageUrl" id="hdnquestionimage" />
+                        <img src="@Model.ImageUrl" alt="" class="imgQuestion" id="ImageUrl" style="border: 3px solid black;height:50px;width:50px" />
+                    }*@
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <input type="file" class="inputImg" name="ImageUrl" id="control" onchange="ShowpImagePreview(this);">
+                        </div>
+                        <div class="col-sm-4">
+                            <input type="button" onclick="Clear();" class="btn btn-danger" value=" clear" />
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.ImageUrl)
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked" })
+                    @Html.ValidationMessageFor(model => model.IsActive)
+                </div>
+            </div>
+            <hr />
+            <h2>Option</h2>
+            <hr />
+
+            @Html.Partial("_AddOption");
+            <input type="hidden" id="AnswerIndex" name="AnswerIndex" value="@AnswerIndex" />
+           
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-danger " />
+                </div>
+            </div>
+        </div>
+
+
+    }
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/OlympaidCategory/create_category.js"></script>
+    <script type="text/javascript">
+        function ShowpImagePreview_1(input, Imgid) {
+            //  alert(Imgid);
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    //  alert('hi2');
+                    $('#' + Imgid).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        function ShowpImagePreview(input) {
+            debugger;
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#hdnquestionimage').attr('src', e.target.result);
+                    $('#ImageUrl').val(e.target.result);
+                    
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+    @*<script type="text/javascript">
+        function ShowpImagePreview1(input) {
+         //   de
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#ImageUrlPara').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>*@
+    <script type="text/javascript">
+        function addButton() {
+            var v = $('#count').val();
+            var first = $('#div-option-contents');
+            $('#count').val(v);
+            var c = parseInt(v);
+            var r = $('<div class="cstmOptn" id="did_' + c + '"><input type="radio" class="IsAnswer" Name="IsAnswer" id="n1_' + c + '" onclick="setans(' + c + ')"/><input type="text" class="form-control" Name="OptionText" id="n1_' + c + '"/><input type="file" Name="OptionImage" onchange="ShowpImagePreview_1(this);" id="n1_' + c + '"/> <input type="hidden"  name="HiddenImagePath" /><input type="button" value="Remove" class="btn btn-danger"  id="n1_' + c + '" onclick="deleteButton(this.id);"></div>');
+            first.append(r);
+            $('#count').val(c + 1);
+            // alert('done');
+            return false;
+
+        }
+        function deleteButton(id) {
+
+            var val = id.split("n1_");
+            $('#did_' + val[1]).remove();
+
+        }
+        function setans() {
+            debugger;
+            var radioButtonlist = document.getElementsByName("IsAnswer");
+            for (var y = 0; y < radioButtonlist.length; y++) {
+                if (radioButtonlist[y].checked) {
+
+                    $('#AnswerIndex').val(y);
+                }
+
+            }
+
+        }
+        setans();
+        $("input:radio[IsAnswer]").click(function () {
+            $("#AnswerIndex").val($(this).val());
+        });
+        
+    </script>
+    <script type="text/javascript">
+        function findExistingCategoryId(ParentId) {
+
+            var url = "/Qusetion/Create?ParentId=" + ParentId;
+            $.ajax({
+                url: url,
+                type: "Get",
+                success: function (Result) {
+
+
+                }
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(window).load(function () {
+                $.ajax({
+                    url: "/Methods/BindQuestionLevel",
+                    type: "get",
+                    success: function (data) {
+                        var opt1 = new Option("Select Question Level");
+                        $('#ddlQuestionLevel').append(opt1);
+                        for (var i = 0; i < data.length; i++) {
+                            var opt = new Option(data[i].KeywordText, data[i].KeywordValue);
+                            $('#ddlQuestionLevel').append(opt);
+                        }
+
+                    }
+                });
+            });
+        });
+
+    </script>
+    <script>
+        function Clear() {
+
+            document.getElementById("control").value = "";
+            $('#ImageUrl').attr('src', null);
+
+            $('#hdnquestionimage').val('');
+        };
+
+      
+    </script>
+}
+
+
+

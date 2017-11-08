@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Silverzone</title>
+
+    <!-- Bootstrap core CSS -->
+    <style type="text/css">
+	/*.wrapper{width:100%;margin:0 auto;margin-top:40px; max-width:960px;}
+	.success{background:#FF9;padding:10px 0px 10px 0px;border: 2px solid #903;}
+	.success h4{margin-left:15px;margin-right:15px;color:#903;}
+.tab{margin-top:30px;}
+	table {
+		margin: 0 auto;
+     width:100%;
+    border: 1px solid #ddd;
+	border-collapse: collapse; 
+border-spacing: 0;
+	 
+}
+td { border: 1px solid #CCC;padding:8px; } 
+@media screen and (max-width: 480px) {
+	table {
+		overflow-x: auto;
+		display: block;
+	}*/
+	h1{text-align: center;
+    text-transform: uppercase;
+    color: #681737;}
+	table {
+    border: 1px solid #ccc;
+    width: 100%;
+    margin:0;
+    padding:0;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  table tr {
+    border: 1px solid #ddd;
+    padding: 5px;
+  }
+
+  table th, table td {
+    padding: 10px;
+    text-align: center;
+  }
+
+  table th {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    table {
+      border: 0;
+    }
+
+    table thead {
+      display: none;
+    }
+
+    table tr {
+      margin-bottom: 10px;
+      display: block;
+      border-bottom: 2px solid #ddd;
+    }
+
+    table td {
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    table td:last-child {
+      border-bottom: 0;
+    }
+
+    table td:before {
+      content: attr(data-label);
+      float: left;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+
+	</style>
+    <!-- Custom styles for this template -->
+   
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+  
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+   
+
+   <div class="wrapper">
+   <h1>Important date</h1>
+	
+<table>
+  <thead>
+    <tr>
+      <th>Olympiad 2016-17</th>
+      <th colspan="2">Olympiad Dates (Opt any One)</th>
+      <th>Last Date of Registration</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Olympiad 2016-17">International Informatics Olympiad</td>
+      <td data-label="Olympiad Dates (Opt any One)">03rd November, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">02nd December, 16</td>
+      <td data-label="Last Date of Registration">31st August, 2016</td>
+    </tr>
+    <tr>
+      <td data-label="Olympiad 2016-17">International Olympiad of Science</td>
+      <td data-label="Olympiad Dates (Opt any One)">18th November, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">08th December, 16</td>
+      <td data-label="Last Date of Registration">31st  August, 2016</td>
+    </tr>
+    <tr>
+      <td data-label="Olympiad 2016-17">International Olympiad of Mathematics</td>
+      <td data-label="Olympiad Dates (Opt any One)">16th November, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">06th December, 16</td>
+      <td data-label="Last Date of Registration">30th September, 2016</td>
+    </tr>
+    <tr>
+      <td data-label="Olympiad 2016-17">SmartKid GK Olympiad</td>
+      <td data-label="Olympiad Dates (Opt any One)">14th December, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">17th January, 17</td>
+      <td data-label="Last Date of Registration">30th September, 2016</td>
+    </tr>
+    
+    <tr>
+      <td data-label="Olympiad 2016-17">International French Language Olympiad</td>
+      <td data-label="Olympiad Dates (Opt any One)">15th December, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">20th January, 17</td>
+      <td data-label="Last Date of Registration">30th September, 2016</td>
+    </tr>
+    
+    <tr>
+      <td data-label="Olympiad 2016-17">International Talent Hunt Olympiad</td>
+      <td data-label="Olympiad Dates (Opt any One)">16th December, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">12th January, 17</td>
+      <td data-label="Last Date of Registration">31st October, 2016</td>
+    </tr>
+    
+     <tr>
+      <td data-label="Olympiad 2016-17">Akhil Bhartiya Hindi Olympiad</td>
+      <td data-label="Olympiad Dates (Opt any One)">20th December, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">10th January, 17</td>
+      <td data-label="Last Date of Registration">30th September, 2016</td>
+    </tr>
+     <tr>
+      <td data-label="Olympiad 2016-17">International Social Studies Olympiad</td>
+      <td data-label="Olympiad Dates (Opt any One)">09th December, 16</td>
+      <td data-label="Olympiad Dates (Opt any One)">27th January, 17</td>
+      <td data-label="Last Date of Registration">30th September, 2016</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+	
+
+	
+	
+		
+	
+	
+  
+  
+  
+
+	
+
+
+	
+
+</div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   
+  </body>
+</html>

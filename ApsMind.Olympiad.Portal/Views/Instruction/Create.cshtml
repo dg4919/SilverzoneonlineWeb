@@ -1,0 +1,99 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.Instruction
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="mar">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Add Instruction</h2>
+
+            </div>
+        </div>
+    </div>
+    @Html.Raw(ViewBag.Message)
+    @using (Html.BeginForm("Create", "Instruction", FormMethod.Post, new { enctype = "Multipart/form-data" }))
+    {
+        @Html.HiddenFor(model => model.InstructionId)
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuizId, new { @class = "control-label col-md-2 col-sm-3" })
+
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    @Html.DropDownListFor(model => model.QuizId, new SelectList(ViewBag.QuizeId, "QuizId", "QuizeName"), "--Select Test Paper --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.QuizId)
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.InstructionText, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    @Html.TextAreaFor(model => model.InstructionText, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.InstructionText)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-10">
+                    <span class="userImg">
+                        @if (Model == null)
+                        {
+                            <img src="~/Images/question_mark1.jpeg" width='185px' height='185px' style="border: 3px solid black" alt="Place your image here" id="ImageUrl">
+                        }
+                        @if (Model != null)
+                        {
+
+                            <img src="@Model.ImageUrl" alt="Image" width='185px' height='185px' style="border:3px solid black" id="ImageUrl" />
+                            <input type="hidden" value="@Model.ImageUrl" name="ImageUrl" />
+                        }
+
+                        <input type="file" class="inputImg" name="ImageUrl" onchange="ShowpImagePreview(this);">
+                        @Html.ValidationMessageFor(model => model.ImageUrl)
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2 col-sm-3" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked" })
+                    @Html.ValidationMessageFor(model => model.IsActive)
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-danger" />
+                </div>
+            </div>
+        </div>
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            <script type="text/javascript">
+                function ShowpImagePreview(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            $('#ImageUrl').attr('src', e.target.result);
+                        }
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
+        }
+    }
+</div>

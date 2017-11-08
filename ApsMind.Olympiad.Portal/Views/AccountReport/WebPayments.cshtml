@@ -1,0 +1,239 @@
+﻿@model IEnumerable<ApsMind.Olympiad.Portal.Models._PaymentHistory>
+
+@{
+    ViewBag.Title = "Web Payment History";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 10);
+
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+    int ActiveUser = -1;
+}
+<style>
+    .excelImg {
+        position: absolute;
+        right: 10%;
+        top: 10%;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-4"><h2 class="page-header">User Account Report </h2></div>
+
+</div>
+<hr />
+<div class="row">
+    <div class="col-sm-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-plus"></i> Total Amount</div>
+            <div class="panel-body">@ViewBag.TotalAmount</div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-success">
+            <div class="panel-heading"><i class="fa fa-apple"></i> I-phone</div>
+            <div class="panel-body">@ViewBag.TotalIphneAmount</div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-android"></i> Android</div>
+            <div class="panel-body">@ViewBag.totalAndroidAmount</div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="panel panel-info">
+            <div class="panel-heading"><i class="fa fa-android"></i> WebPayments</div>
+            <div class="panel-body">@ViewBag.totalWebAmount</div>
+        </div>
+    </div>
+</div>
+<br />
+@if (TempData["Message"] != null)
+{
+    <div>
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong>@TempData["Message"].
+        </div>
+
+    </div>
+}
+
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.Raw(ViewBag.Message)
+    <div class="page-header col-sm-12">
+        <div class="row srchQuestion">
+            <div class="col-lg-3">
+                <input type="text" name="UserName" value="@ViewBag.UserName" placeholder="Search for Name..." class="form-control">
+            </div>
+
+            <div class="col-lg-3">
+                <input type="text" name="PaperName" value="@ViewBag.PaperName" placeholder="Search for Test Paper Name..." class="form-control">
+            </div>
+            <div class="col-lg-3">
+                <input type="text" name="EmailId" value="@ViewBag.EmailId" placeholder="Search for Email Id..." class="form-control">
+            </div>
+        </div>
+        <br />
+        <div class="row srchQuestion">
+            <div class="col-lg-3">
+                <label>From Date:-</label>
+                <input type="text" id="StartDate" name="StartDate" placeholder="Search for From Date.." value="@ViewBag.StartDate" class="form-control">
+            </div>
+            <div class="col-lg-3">
+                <span>Till Date:-</span>
+                <input type="text" id="EndDate" name="EndDate" placeholder=" Search for Till Date..." value="@ViewBag.EndDate" class="form-control">
+            </div>
+
+
+
+        </div>
+        <br />
+        <div class="row srchQuestion">
+
+
+
+            <div class="col-lg-3">
+                <select id="subject" name="subject" class="form-control"></select>
+            </div>
+            <div class="col-sm-5">
+                <button id="btnResetCategory" type="button" class="btn btn-warning">Clear</button>
+            </div>
+            <div class="row">
+                <img src="~/Images/Excel_Document_Icon(1).PNG" id="exl" alt="Export to PDF" title="Export to Excel" height="30" width="35" style="margin-right:10px; position:relative;" />
+                <button type="submit" class="btn btn-primary" style="width: 100px; height: 30px">Search Now</button>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+
+                    <div class="col-md-5">
+                        <input type="hidden" id="ParentCategoryId" name="ParentCategoryId" value="@ViewBag.ParentCategoryId" onclick='fillSelectedPath(this.value());' />
+
+                        <span id="showSelected" style="font-size:larger;font-weight:100;">Root</span>
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+    <br />
+
+}
+<hr />
+@Html.Raw(ViewBag.Message)
+
+
+
+<div class="col-sm-12">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="iPhoneTabColor"><a href="/AccountReport/IPhoneUser" aria-controls="ProductGridview"><i class="fa fa-apple"></i> I-Phone</a></li>
+        <li role="presentation" class="androidTabColor"><a href="/AccountReport/Index" aria-controls="Productview"> <i class="fa fa-android"></i> Android-Phone</a></li>
+        <li role="presentation" class="active androidTabColor"><a href="/AccountReport/WebPayments" aria-controls="Productview"> <i class="fa fa-android"></i> Web-Payment History</a></li>
+    </ul>
+    <div class="cstmTbl">
+        @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+
+
+         grid.Column("OrderId", "OrderId"),
+         grid.Column("UserId","By UserId"),
+         grid.Column("OrderSqId","OrderSqId"),
+         grid.Column("Amount","Amount"),
+          grid.Column("Currency","Currency"),
+           grid.Column("BID_BankRefNo","BankRefNo"),
+          grid.Column("PRN_TrackingId","TrackingId"),
+            grid.Column("TransactionStatus","TransactionStatus"),
+            grid.Column("TXNDATETIME","TXNDATETIME",format: (item) => TimeZoneInfo.ConvertTime(item.TXNDATETIME, est).ToString("dd MMM yyyy hh:mm tt")),
+            
+            grid.Column("Name","User Name"),
+            grid.Column("EmailId","Email"),
+            grid.Column("QuizId","QuizId"),
+            grid.Column("QuizName","Quiz Name"),
+            grid.Column("CategoryId","ClassId"),
+            grid.Column("CategoryName","Class Name"),
+         
+
+
+    })
+
+    </div>
+</div>
+@section Scripts
+     {
+    <script src="~/assets/OlympaidCategory/createQuestioncategory.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            $(window).load(function () {
+                $.ajax({
+                    url: "/Methods/RoleName",
+                    type: "get",
+                    success: function (data) {
+                        var opt1 = new Option("---Select Role--", 0);
+                        $('#ddlroleid').append(opt1);
+                        for (var i = 0; i < data.length; i++) {
+                            var opt = new Option(data[i].RoleName, data[i].RoleId);
+                            $('#ddlroleid').append(opt);
+                        }
+
+                    }
+                });
+            });
+        });
+    </script>
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script>
+        $('#StartDate').datetimepicker(
+                        {
+                            datepicker: true,
+                            timepicker: true,
+                            //format: 'd M, Y',
+                            format: 'd M Y H:i',
+                            // minDate: 0,
+                            //MinTime:30,
+                            step: 30
+                        });
+    </script>
+    <script>
+        $('#EndDate').datetimepicker(
+                        {
+                            datepicker: true,
+                            timepicker: true,
+                            //format: 'd M, Y',
+                            format: 'd M Y H:i',
+
+                            //MinTime:30,
+                            step: 30
+                        });
+    </script>
+    <script>
+        $('#exl').on('hover', function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('#exl').on('click', function () {
+            location.href = "ExportToExcel"
+        });
+    </script>
+}
+

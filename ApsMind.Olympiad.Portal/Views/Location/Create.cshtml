@@ -1,0 +1,77 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.Location
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+      @Html.Raw(ViewBag.Message)
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 class="modal-title"> Add Location</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-2">Select&nbsp;Location <abbr title="required">*</abbr></label>
+                <div class="col-md-5">
+                    <select id="Category" class="form-control" name="Category"></select>
+                </div>
+                <div class="col-sm-5">
+                    <button id="btnResetCategory" type="button" class="btn btn-warning">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-2">Selected&nbsp;Location<abbr title="required">*</abbr></label>
+                <div class="col-md-5">
+                    @Html.HiddenFor(model => model.LocationId)
+                    <input type="hidden" id="ParentLocationId" name="ParentLocationId" value="@ViewBag.ParentLocationId" onclick='fillSelectedPath(this.value());' />
+                    <span id="showSelected" style="font-size:larger;font-weight:100;">Root</span>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationName, new { @class = "control-label col-md-2 col-sm-3" })
+            <div class="col-md-4 col-sm-8 col-xs-12">
+
+                @Html.TextBoxFor(model => model.LocationName, new { @class = "form-control", @placeholder = " Enter Location Name" })
+                @Html.ValidationMessageFor(model => model.LocationName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LocationTypeId, new { @class = "control-label col-md-2 col-sm-3" })
+            <div class="col-md-4 col-sm-8 col-xs-12">
+
+                @Html.DropDownListFor(model => model.LocationTypeId, new SelectList(ViewBag.CategoryTypeName, "LocationTypeId", "LocationTypeName"), "--Select Location Type--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LocationTypeId)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked" })
+                @Html.ValidationMessageFor(model => model.IsActive)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success themeColor">Save</button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+ 
+<script src="~/assets/OlympaidCategory/CreateLocation.js"></script>
+}

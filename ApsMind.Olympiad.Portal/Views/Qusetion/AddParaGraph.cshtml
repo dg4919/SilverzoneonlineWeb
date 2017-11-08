@@ -1,0 +1,89 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.Para
+
+@{
+    ViewBag.Title = "AddParaGraph";
+}
+
+<h2>AddParaGraph</h2>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick='$("#myModal").hide()'>×</button>
+
+</div>
+
+@using (Html.BeginForm("AddParaGraph", "Qusetion", FormMethod.Post, new { enctype = "Multipart/form-data", @id = "frmPara" }))
+{
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(model => model.ParaText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.ParaText)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImageUrl, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <span class="userImg">
+                        @if (Model == null)
+                        {
+                            <img src="~/Images/question_mark1.jpeg" width='185px' height='185px' style="border: 3px solid black" alt="Place your image here" id="ImageUrlPara">
+
+                        }
+                        @if (Model != null)
+                        {
+
+                            <img src="@Model.ImageUrl" alt="Image" width='185px' height='185px' style="border:3px solid black" id="ImageUrlPara" />
+
+                        }
+
+                        <input type="file" class="inputImg" name="ImageUrl1" onchange="ShowpImagePreview1(this);">
+
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked" })
+                    @Html.ValidationMessageFor(model => model.IsActive)
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @*<a class="btn btn-primary" href='/Qusetion/AddParaGraph/'>Save</a>*@
+                    <input type="submit" id="btnparasubmit" value="Save" onchange="SubmitButtion()" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#btnparasubmit").on("click", function (event) {
+            alert("Handler for .submit() called.");
+            event.preventDefault();
+
+        });
+
+    </script>
+    <script type="text/javascript">
+        function SubmitButtion() {
+            //  alert('hi');
+            var url = "/Qusetion/AddParaGraph?ParentId=" + ParentId;
+            $.ajax({
+                url: url,
+                type: "Post",
+                success: function (Result) {
+                    alert(Result);
+
+                }
+            });
+        }
+    </script>
+}
+
+

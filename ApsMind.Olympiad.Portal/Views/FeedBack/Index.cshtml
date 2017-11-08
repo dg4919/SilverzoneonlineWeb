@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 15);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+}
+<div class="mar">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Feedback Details</h2>
+
+            </div>
+        </div>
+    </div>
+    @if (TempData["Message"] != null)
+    {
+        <div>
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>@TempData["Message"].
+            </div>
+            @*<span style="text-align:center; color:green;">@TempData["Message"]</span>*@
+        </div>
+    }
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        <div class="page-header col-sm-12">
+            <div class="row srchQuestion">
+
+                <div class="col-lg-3">
+                    <input type="text" name="UserName" value="@ViewBag.UserName" placeholder="Search for User Name Text..." class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="EmailID" value="@ViewBag.EmailID" placeholder="Search for Email Id Text..." class="form-control">
+                </div>
+
+                <div class="col-lg-3">
+
+                    <input type="text" id="StartDate" name="StartDate" placeholder="Search for From Date..." value="@ViewBag.StartDate" class="form-control">
+                </div>
+                <div class="col-lg-3">
+
+                    <input type="text" id="EndDate" name="EndDate" placeholder="Search for Till Date..." value="@ViewBag.EndDate" class="form-control">
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="page-header col-sm-12">
+            <div class="row srchQuestion">
+                <div class="col-lg-3">
+                    @Html.DropDownList("ClassUser", new SelectList(ViewBag.ClassUser, "value", "text"), "--Select Class--", new { @class = "form-control" })
+
+                </div>
+                <div class="col-lg-3">
+
+                    <button type="submit" class="btn btn-primary">Search Now</button>
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <span style="color:black">Total FeedBack:-</span>
+                <span style="font-size:large;color:black">@ViewBag.TotalFeedback</span>
+            </div>
+        </div>
+        <br />
+    }
+    <hr />
+    @Html.Raw(ViewBag.Message)
+    <div class="col-sm-12">
+        <div class="cstmTbl">
+            @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                    //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+         grid.Column("FeedBackId", "Feed Back Id"),
+                    grid.Column("UserID","User ID"),
+            grid.Column("UserName","User Name"),
+                                   grid.Column("EmailId","Email Id"),
+            grid.Column("City","City"),
+            grid.Column("Class","Class"),
+            grid.Column("Message","Message"),
+            grid.Column("CreatedBy","CreatedBy"),
+            grid.Column("CreatedOn","Created On",format: (item) => TimeZoneInfo.ConvertTime(item.CreatedOn, est).ToString("dd MMM yyyy hh:mm tt")),
+
+             grid.Column("Remove",format: (item) => @Html.ActionLink("Remove", "Remove", new { FeedbackId = item.FeedBackId }), style: "webGridIcon"),
+
+
+
+    })
+
+        </div>
+    </div>
+</div>
+    @section Scripts
+     {
+
+        @Scripts.Render("~/bundles/jqueryval")
+
+        @Scripts.Render("~/bundles/jqueryui")
+        @Styles.Render("~/Content/themes/base/css")
+
+
+        <script src="~/Scripts/jquery.datetimepicker.js"></script>
+        <script>
+            $('#StartDate').datetimepicker(
+                            {
+                                datepicker: true,
+                                timepicker: true,
+                                //format: 'd M, Y',
+                                format: 'd M Y H:i',
+                                // minDate: 0,
+                                //MinTime:30,
+                                step: 30
+                            });
+        </script>
+        <script>
+            $('#EndDate').datetimepicker(
+                            {
+                                datepicker: true,
+                                timepicker: true,
+                                //format: 'd M, Y',
+                                format: 'd M Y H:i',
+
+                                //MinTime:30,
+                                step: 30
+                            });
+        </script>
+    }
+

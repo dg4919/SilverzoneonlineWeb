@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 15);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+}
+
+<h2>Index</h2>
+
+@Html.Raw(ViewBag.Message)
+<div class="col-sm-12">
+    <div class="cstmTbl">
+        @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+         grid.Column("OptionId", "Id"),
+                    grid.Column("QuestionId","Question Id"),
+            grid.Column("QuestionName","Question Name"),
+             grid.Column("OptionText","Option Text"),
+             grid.Column("IsAnswer","Status"),
+
+             grid.Column("Image",
+          format: (item) =>
+        {
+         return Html.Raw(
+                @item.ImageUrl == null ? "" : string.Format("<img src=\"{0}\" alt=\"Image\" width='100px' height='100px'/>", Url.Content(@item.ImageUrl)
+             )
+             );
+        }),
+             grid.Column(format: (item) => @Html.ActionLink("Edit", "Create", new { OptionId = item.OptionId }), style: "webGridIcon"),
+
+
+
+    })
+
+    </div>
+</div>

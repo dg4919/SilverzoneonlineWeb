@@ -1,0 +1,53 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.AnswerSheet
+
+@{
+    ViewBag.Title = "OptionTextBox";
+}
+
+<h2>OptionTextBox</h2>
+
+
+@using (Html.BeginForm("OptionTextBox", "Qusetion"))
+{
+
+    <div id='div-contents'>
+        <form action="#">
+            <input type="hidden" id="count" value="1">
+            <div id="did1">
+
+                <label>Name</label>
+                <input type="text" name="n1" id='n1'>
+            </div>
+            <input type="button" value="AddText" onclick="addButton();">
+        </form>
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function addButton() {
+            var c = $('#count').val();
+            var first = $('#did' + c);
+            c = parseInt(c) + 1;
+            $('#count').val(c);
+            var r = $('<div id="did' + c + '"><label>Name</lablel><input type="text" Name="n' + c + '" id="n' + c + '"/><input type="button" value="Delete"  id="n' + c + '" onclick="deleteButton(this.id);"></div>');
+            first.before(r);
+            return false;
+        }
+        function deleteButton(id) {
+            var val = id.split("n");
+            $('#did' + val[1]).remove();
+        }
+
+
+    </script>
+}

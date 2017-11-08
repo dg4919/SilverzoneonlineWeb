@@ -1,0 +1,65 @@
+﻿
+@model ApsMind.Olympiad.Framework.Entity.ScoreCardHeader
+
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="row">
+    <div class="col-lg-6">
+        <span style="color:black">@Model.SubjectName / </span>
+        <span style="font-size:large;color:black">@Model.QuizName</span>
+    </div>
+    <div class="col-lg-3">
+        <span style="color:black">Paper Type :</span>
+        <span style="font-size:large;color:black">@Model.PayType</span>
+    </div>
+    <div class="col-lg-3">
+        <span style="color:black">No. of question:</span>
+        <span style="font-size:large;color:black">@Model.QuestionCount</span>
+    </div>
+    <div class="col-lg-3">
+        <span style="color:black">Total Score:-</span>
+        <span style="font-size:large;color:black">@Model.TotalScore</span>
+    </div>    
+</div>
+<h3 class="modal-title">Answer Sheet Details</h3>
+<br />
+<div class="row">
+       <div class="col-sm-12 question">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="caption">
+                        @*<h4 class="text-theme modal-title">Quiz Paper Name:-@list.QuizId</h4>*@
+                        <table class="table-responsive table-bordered table-condensed table-striped cstm-table">
+                            <tr>
+                                <th class="text-theme">User Name</th>
+                                <th class="text-theme">Start Date</th>
+                                <th class="text-theme">End Date</th>
+                                <th class="text-theme">Option score</th>
+                            </tr>
+                            @foreach (var list in Model.ScoreCard)
+                            {
+                                <tr>
+                                <td>
+                                    @list.UserName
+                                </td>
+                                <td>
+                                    @list.StartTime.ToString()
+                                </td>
+                                <td>
+                                    @list.EndTime.ToString()
+                                </td>
+                                <td>@list.ObtainScore</td>
+                            </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+
+

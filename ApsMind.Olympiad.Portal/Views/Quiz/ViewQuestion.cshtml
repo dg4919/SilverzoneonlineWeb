@@ -1,0 +1,112 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.ViewQuestion
+@{
+    int otype = 65;
+    var RoleID = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.RoleId;
+    var data = @Model.QuestionId;
+}
+@Html.Raw(ViewBag.Message)
+
+
+  <div class="mar">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="page-title">
+                  <h2 class="">View Question</h2>
+
+              </div>
+          </div>
+      </div>
+    <div class="row">
+        @{
+            otype = 65;
+
+        <div class="col-sm-12 question">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="caption">
+                        @if (Model.ParaId != null)
+                            {
+                            <h3> <pre>@Model.ParaText</pre></h3>
+                            }
+                        <h4 class="qTxt"><i class="fa fa-chevron-circle-right"></i><span>@Model.QuestionId</span>@Html.Raw(Model.QuestionText == null ? "" : Model.QuestionText.Replace("\r\n", "<br/>"))</h4>
+                        @if (Model.ImageUrl != null)
+                            {
+                            <div class="col-sm-12 imgQuestion"><img src="@Model.ImageUrl" alt="Image" id="ImageUrl" /></div>
+                            }
+                        <div class="optns">
+                            <ol type="A">
+                                @foreach (var list2 in Model.Options)
+                                    {
+                                    <li class="col-sm-3 OptionText">
+
+                                        @if (list2.ImageUrl != null)
+                                            {
+                                    <img src="@list2.ImageUrl" alt="Image" id="ImageUrl" />
+                                    <span class="">@list2.OptionText</span>
+                                            }
+                                            else
+                                            { @list2.OptionText }
+
+
+                                    </li>                    }
+                            </ol>
+                        </div>
+
+                        <div class="row rtAns">
+                            <div class="col-sm-12"><h2>Answer</h2></div>
+                            <div class="col-sm-10">
+                                <ul>
+                                    @foreach (var list2 in Model.Options)
+                                        {
+                                            if (list2.IsAnswer == true && list2.QuestionId == list2.QuestionId && list2.ImageUrl != null && list2.OptionText == list2.OptionText)
+                                            {
+                                                if (list2.IsAnswer == true && list2.QuestionId == list2.QuestionId && list2.ImageUrl != null && list2.OptionText == list2.OptionText)
+                                                {
+                                        <img src="@list2.ImageUrl" alt="" id="ImageUrl" style="height:70px;width:70px" />
+                                        <li>@((char)otype):- @list2.OptionText</li>
+                                                }
+                                                otype++;
+
+
+                                            }
+                                            else
+                                            {
+                                                if (list2.IsAnswer == true && list2.QuestionId == Model.QuestionId)
+                                                {
+                                        <li>@((char)otype):- @list2.OptionText</li>
+
+                                                }
+                                                otype++;
+
+                                            }
+
+                                        }
+                                </ul>
+                            </div>
+                            @if (Model.IsPublished == false)
+                                {
+                                <div class="col-sm-2">
+                                    <a class="btn btn-primary cstmBtn" href='/Qusetion/Create?QuestionId=@Model.QuestionId&&QuizId=@Model.QuizId'>Edit</a>&nbsp;
+                                    <a class="btn btn-danger cstmBtn" href='/Qusetion/Remove?QuestionId=@Model.QuestionId&&QuizId=@Model.QuizId'>Remove</a>
+                                </div>
+                                }
+                            @if (Model.IsPublished == true && RoleID == 1)
+                                {
+                                <div class="col-sm-2">
+                                    <a class="btn btn-primary cstmBtn" href='/Qusetion/Create?QuestionId=@Model.QuestionId&&QuizId=@Model.QuizId'>Edit</a>&nbsp;
+                                    <a class="btn btn-danger cstmBtn" href='/Qusetion/Remove?QuestionId=@Model.QuestionId&&QuizId=@Model.QuizId'>Remove</a>
+                                </div>
+                                }
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+      </div>
+

@@ -1,0 +1,275 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.SeachQusetion
+@{
+    var RoleID = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.RoleId;
+    int otype = 65;
+    List<SelectListItem> PerPage = new List<SelectListItem>();
+    PerPage.Add(new SelectListItem() { Text = "10", Value = "10" });
+    PerPage.Add(new SelectListItem() { Text = "20", Value = "20" });
+    PerPage.Add(new SelectListItem() { Text = "30", Value = "30" });
+    PerPage.Add(new SelectListItem() { Text = "40", Value = "40" });
+    PerPage.Add(new SelectListItem() { Text = "50", Value = "50" });
+    PerPage.Add(new SelectListItem() { Text = "75", Value = "75" });
+    PerPage.Add(new SelectListItem() { Text = "100", Value = "100" });
+    int value = 1;
+}
+@Html.Raw(ViewBag.Message)
+<div class="mar">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">All Questions</h2>
+
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+
+
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-2 col-sm-3">Select&nbsp;Subject <abbr title="required">*</abbr></label>
+
+
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    <select id="subject" name="subject" class="form-control"></select>
+                </div>
+                <div class="col-sm-5">
+                    <button id="btnResetCategory" type="button" class="btn btn-warning">Clear</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-2">Selected&nbsp;Subject<abbr title="required">*</abbr></label>
+                <div class="col-md-5">
+                    <input type="hidden" id="ParentCategoryId" name="ParentCategoryId" value="@ViewBag.ParentCategoryId" onclick='fillSelectedPath(this.value());' />
+
+                    <span id="showSelected" style="font-size:larger;font-weight:100;">Root</span>
+                    <p class="help-block"></p>
+                </div>
+            </div>
+        </div>
+        <div class="page-header col-sm-12">
+            <div class="row srchQuestion">
+                <div class="col-lg-3">
+                    <input type="text" name="QuestionText" value="@ViewBag.QuestionText" placeholder="Search for Question Text..." title="Search for Question Text..." class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <input type="text" name="QuestionNumber" value="@ViewBag.QuestionNumber" placeholder="Search for Question Number..." title="Search for Question Number..." class="form-control">
+                </div>
+
+                <div class="col-lg-3">
+
+                    @Html.DropDownList("QuestionLevelId", new SelectList(ViewBag.QuestionLevelQuestion, "value", "text"), "--Select Question Level--", new { @class = "form-control" })
+                    @*<select id="ddlQuestionLevel" name="QuestionLevelId" class="form-control"></select>*@
+                </div>
+
+            </div>
+            <br />
+
+            <div class="row srchQuestion">
+                <div class="col-lg-3">
+                    <label>From Date:-</label>
+                    <input type="text" id="StartDate" name="StartDate" placeholder="Search for From Date.." value="@ViewBag.StartDate" class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <span>Till Date:-</span>
+                    <input type="text" id="EndDate" name="EndDate" placeholder=" Search for Till Date..." value="@ViewBag.EndDate" class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <span>Created By</span>
+
+                    @Html.DropDownList("CreatedBy", new SelectList(ViewBag.createdBy, "value", "text"), "--Select Created By--", new { @class = "form-control" })
+
+                </div>
+
+            </div>
+            <br />
+            <div class="row srchQuestion">
+                <div class="col-lg-3">
+                    <label>Test Paper Name</label>
+                    <input type="text" name="TestPaperName" placeholder="Search for From Test Paper Name.." value="@ViewBag.QuizName" class="form-control">
+                </div>
+                @*<div class="col-lg-3">
+                        <span class="form-group" style="font-size:large;color:black">PerPage:- @Html.DropDownListFor(m => m.PerPage, PerPage, new { @class = "form-control" })</span>
+                    </div>*@
+                <div class="col-lg-3">
+                    <span style="color:black">Total Quetion:-</span>
+                    <span style="font-size:large;color:black">@ViewBag.TotalQuestion</span>
+                </div>
+
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-primary" >Search Now</button>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+
+    }
+    <div class="row">
+        @foreach (var quiz in Model.ListQuizView)
+        {
+
+            <div class="col-sm-12 question">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <div class="caption">
+                            <h3>
+                                <i class="fa fa-file-text-o"></i>
+                                Test Paper Name:-@quiz.QuizName
+                                <a class="btn btn-primary cstmBtn" href='/Qusetion/QuizPrint?id=@quiz.QuizId'>Quiz View</a>
+                            </h3>
+                            <h4>Subject Name:-@quiz.CategoryName</h4>
+
+                            @foreach (var para in quiz.paragraph)
+                            {
+
+                                if (para.paratext != null)
+                                {
+                                    <h3> <pre>@para.paratext</pre></h3>
+                                }
+                                foreach (var qns in para.questionList)
+                                {
+                                    otype = 65;
+
+                                    <div class="wrapQuestion"></div>
+                                    <div class="qTxt">
+
+                                        <h4><span>@value :-</span> @qns.QuestionText</h4>
+                                    </div>
+                                    if (qns.QuestionImage != null)
+                                    {
+                                        <div class="col-sm-12 imgQuestion"><img src="@qns.QuestionImage" alt="Image" id="ImageUrl" /></div>
+                                    }
+                                    <div class="optns">
+                                        <ol type="A">
+                                            @foreach (var list2 in qns.Options)
+                                            {
+                                                <li class="col-sm-3 OptionText">
+
+                                                    @if (list2.ImageUrl != null)
+                                                    {
+                                                        <img src="@list2.ImageUrl" alt="Image" id="ImageUrl" />
+                                                    }
+
+                                                    @list2.OptionText
+
+                                                </li>
+                                            }
+                                        </ol>
+                                    </div>
+
+                                    <div class="row rtAns">
+                                        <div class="col-sm-12"><h4 class="ans">Answer</h4></div>
+                                        <div class="col-sm-10">
+                                            <ul>
+                                                @foreach (var list2 in qns.Options)
+                                                {
+                                                    if (list2.IsAnswer == true && list2.QuestionId == list2.QuestionId && list2.ImageUrl != null && list2.OptionText == list2.OptionText)
+                                                    {
+                                                        if (list2.IsAnswer == true && list2.QuestionId == list2.QuestionId && list2.ImageUrl != null && list2.OptionText == list2.OptionText)
+                                                        {
+                                                            <img src="@list2.ImageUrl" alt="" id="ImageUrl" style="height:70px;width:70px" />
+                                                            <li>@((char)otype):- @list2.OptionText</li>
+                                                        }
+                                                        otype++;
+
+
+                                                    }
+                                                    else
+                                                    {
+                                                        if (list2.IsAnswer == true && list2.QuestionId == qns.QuestionId)
+                                                        {
+                                                            <li>@((char)otype):- @list2.OptionText</li>
+
+                                                        }
+                                                        otype++;
+
+                                                    }
+
+                                                }
+                                            </ul>
+                                        </div>
+
+                                        @if (@quiz.IsPublish == false || RoleID == 1)
+                                        {
+                                            <div class="col-sm-2">
+                                                <a class="btn btn-primary cstmBtn" href='/Qusetion/Create?QuestionId=@qns.QuestionId&&ParentId=@quiz.CategoryId&&QuizId=@quiz.QuizId'>Edit</a>
+                                                <a class="btn btn-danger cstmBtn" href='/Qusetion/Remove?QuestionId=@qns.QuestionId&&QuizId=@quiz.QuizId&&ParentId=@quiz.CategoryId'>Remove</a>
+                                            </div>
+                                        }
+
+                                    </div>
+                                        value = value + 1;
+                                }
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>
+
+
+@section Scripts
+     {
+    <script src="~/assets/OlympaidCategory/createQuestioncategory.js"></script>
+
+    <script type="text/javascript">
+        $('#btnResetCategory').on("click", function () {
+            $('#ParentCategoryId').val(0);
+            $('#showSelected').html('Root');
+            fillCategory(0);
+        });
+
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script>
+        $('#StartDate').datetimepicker(
+                        {
+                            datepicker: true,
+                            timepicker: true,
+                            //format: 'd M, Y',
+                            format: 'd M Y H:i',
+                            // minDate: 0,
+                            //MinTime:30,
+                            step: 30
+                        });
+    </script>
+    <script>
+        $('#EndDate').datetimepicker(
+                        {
+                            datepicker: true,
+                            timepicker: true,
+                            //format: 'd M, Y',
+                            format: 'd M Y H:i',
+
+                            //MinTime:30,
+                            step: 30
+                        });
+    </script>
+
+    <script src="~/assets/OlympaidCategory/createQuestioncategory.js"></script>
+
+    <script type="text/javascript">
+        $('#btnResetCategory').on("click", function () {
+            $('#ParentCategoryId').val(0);
+            $('#showSelected').html('Root');
+            fillCategory(0);
+        });
+
+    </script>
+}

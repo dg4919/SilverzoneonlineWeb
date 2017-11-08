@@ -1,0 +1,52 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.UserProfile
+
+@{
+    ViewBag.Title = "Login";
+    
+}
+
+<section id="loginForm">
+    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+    {
+         @Html.Raw(ViewBag.Message)
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="container">
+
+
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-2">
+                    @*@Html.Raw(ViewBag.Message)*@
+
+
+                    <h3 class="text-center logo">
+                        <img src="~/assets/images/SilverZone_Logo.png" alt="Silver" class="img-responsive">
+
+                    </h3>
+                    <p class="text-center"></p>
+                    <hr class="clean">
+                    <form role="form">
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="User Name" name="UserName">
+                            @Html.ValidationMessageFor(model => model.UserName)
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" name="Password">
+                            
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-block">Sign in</button>
+                    </form>
+                    <hr>
+                </div>
+            </div>
+        </div>
+       
+
+    }
+</section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

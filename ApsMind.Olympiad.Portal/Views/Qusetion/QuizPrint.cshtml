@@ -1,0 +1,114 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.ViewQuizDetails
+@{
+    int otype = 65;
+    int value = 1;
+}
+<a href="javascript:window.open('/Qusetion/GetPrint?id=@Model.QuizId')">
+    Print Original (प्रिन्ट)
+</a>
+<br />
+
+<div class="row">
+    <div class="col-sm-12 question">
+        <div class="panel panel-default">
+            <div class="panel-body">
+
+                <div class="caption">
+                    <h3>
+                        <i class="fa fa-file-text-o"></i>
+                        Test Paper Name:-@Model.QuizName
+                    </h3>
+                    <h4>Subject Name:-@Model.CategoryName</h4>
+
+                    @if (!String.IsNullOrEmpty(Model.Instruction))
+                    {
+                        <h3> <pre>Instruction:- @Model.Instruction</pre></h3>
+                    }
+
+                    @foreach (var qns in Model.QuestionList)
+                    {
+                        if (qns.ParaId != null && qns.ParaId != 0)
+                        {
+                            <h3> <pre>@qns.ParaText</pre>
+                                @if (qns.ParaImage != null)
+                                {
+                                    <div class="col-sm-12"><img src="@qns.ParaImage" alt="Image" /></div>
+                                }
+                            </h3>
+                        }
+                        //foreach (var qns in para.questionList)
+                        {
+                            otype = 65;
+
+                            <div class="wrapQuestion"></div>
+                            <div class="qTxt">
+
+                                <h4><span>@value :-</span> @Html.Raw(qns.QuestionText == null? "" : qns.QuestionText.Replace("\r\n", "<br/>"))</h4>
+                            </div>
+                            if (qns.ImageUrl != null)
+                            {
+                                <div class="col-sm-12 imgQuestion"><img src="@qns.ImageUrl" alt="Image" id="ImageUrl" /></div>
+                        
+                            }
+                            <div class="optns">
+                                <ol type="A">
+                                    @foreach (var list2 in qns.Options)
+                                    {
+                                        <li class="col-sm-3 OptionText">
+
+                                            @if (list2.ImageUrl != null)
+                                            {
+                                                <img src="@list2.ImageUrl" alt="Image" id="ImageUrl" />
+                                            }
+
+                                            @list2.OptionText
+
+                                        </li>
+                                    }
+                                </ol>
+                            </div>
+
+                            <div class="row rtAns">
+                                <div class="col-sm-12"><h4 class="ans">Answer</h4></div>
+                                <div class="col-sm-10">
+                                    <ul>
+                                        @foreach (var list2 in qns.Options)
+                                        {
+                                            if (list2.IsAnswer == true && list2.QuestionId == list2.QuestionId && list2.ImageUrl != null && list2.OptionText == list2.OptionText)
+                                            {
+                                                if (list2.IsAnswer == true && list2.QuestionId == list2.QuestionId && list2.ImageUrl != null && list2.OptionText == list2.OptionText)
+                                                {
+                                                    <img src="@list2.ImageUrl" alt="" id="ImageUrl" style="height:70px;width:70px" />
+                                                    <li>@((char)otype):- @list2.OptionText</li>
+                                                }
+                                                otype++;
+
+
+                                            }
+                                            else
+                                            {
+                                                if (list2.IsAnswer == true && list2.QuestionId == qns.QuestionId)
+                                                {
+                                                    <li>@((char)otype):- @list2.OptionText</li>
+
+                                                }
+                                                otype++;
+
+                                            }
+
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                                        value = value + 1;
+                        }
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

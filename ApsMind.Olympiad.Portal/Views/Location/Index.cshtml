@@ -1,0 +1,183 @@
+﻿@model IEnumerable<ApsMind.Olympiad.Framework.Entity.LocationListView>
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 15);
+
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+
+}
+
+@if (TempData["Message"] != null)
+{
+    <div>
+        <div class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong>@TempData["Message"].
+        </div>
+        @*<span style="text-align:center; color:green;">@TempData["Message"]</span>*@
+    </div>
+}
+<h2 class="modal-title">Location View</h2>
+<hr />
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.Raw(ViewBag.Message)
+    <div class="page-header col-sm-12">
+
+
+        <div class="row srchQuestion">
+            <div class="col-lg-3">
+                <input id="LocationId" name="LocationId" type="text" class="form-control" value="@ViewBag.LocationId" placeholder="Search for Location..." />
+                <input type="hidden" name="LocationIdS" id="LocationIdS" />
+                <input type="hidden" name="LocationName" id="LocationName" />
+            </div>
+            <div class="col-lg-3">
+
+                @Html.DropDownList("LocationTypeId", new SelectList(@ViewBag.LocationTypeNmae, "value", "text"), "--Select Location Type--", new { @class = "form-control" })
+            </div>
+            <div class="col-lg-3">
+
+
+                <button type="submit" class="btn btn-primary" style="width: 100px; height: 30px">Search Now</button>
+            </div>
+
+
+
+
+
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-lg-3">
+                <span style="color:black">Total No Location:-</span>
+                <span style="font-size:large;color:black">@ViewBag.TotalLocation</span>
+            </div>
+        </div>
+    </div>
+    <br />
+
+}
+@Html.Raw(ViewBag.Message)
+<div class="col-sm-12">
+    <div class="cstmTbl">
+        @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+
+
+         grid.Column("LocationId", "Id"),
+          grid.Column("LocationName","Location Name"),
+           grid.Column("LocationTypeId","Location Type"),
+           grid.Column("ParentLocationId", "Sub Category Location"),
+
+                       grid.Column("IsActive","Status"),
+
+           grid.Column("UpdatedOn","Updated On",format: (item) => TimeZoneInfo.ConvertTime(item.UpdatedOn, est).ToString("dd MMM yyyy hh:mm tt")),
+
+             grid.Column("Edit",format: (item) => @Html.ActionLink("Edit", "Create", new { LocationId = item.LocationId }), style: "webGridIcon"),
+
+
+
+    })
+
+    </div>
+</div>
+@section Scripts
+     {
+    @Scripts.Render("~/bundles/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/jquery.datetimepicker.js"></script>
+    <script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <script>
+        $('#StartDate').datetimepicker(
+                        {
+                            datepicker: true,
+                            timepicker: true,
+                            //format: 'd M, Y',
+                            format: 'd M Y H:i',
+                            // minDate: 0,
+                            //MinTime:30,
+                            step: 30
+                        });
+    </script>
+    <script>
+        $('#EndDate').datetimepicker(
+                        {
+                            datepicker: true,
+                            timepicker: true,
+                            //format: 'd M, Y',
+                            format: 'd M Y H:i',
+
+                            //MinTime:30,
+                            step: 30
+                        });
+
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#aGoBack').css("display", "none");
+
+        });
+
+        $(function () {
+
+            // Search by Location
+            $("#LocationId").autocomplete({
+
+                source: function (request, response) {
+                    var customer = new Array();
+                    $.ajax({
+                        async: false,
+                        cache: false,
+                        type: "POST",
+                        url: "@(Url.Action("AutocompleteLocationSearch", "Method"))",
+                        data: { "searchText": request.term },
+                        success: function (data) {
+                            for (var i = 0; i < data.length ; i++) {
+                                customer[i] = { label: data[i].Value, Id: data[i].Key };
+                            }
+                        }
+                    });
+                    response(customer);
+                },
+                minLength: 0,
+                select: function (event, ui) {
+                    //alert(ui.item.Id);
+
+                    $('#LocationIdS').val(ui.item.Id);
+                    $('#LocationName').val(ui.item.label);
+
+
+
+                }
+            }).focus(function () {
+                $(this).trigger('keydown.autocomplete');
+            });
+            //End of Search by location
+
+
+
+
+
+
+        });
+
+    </script>
+}

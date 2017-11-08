@@ -1,0 +1,74 @@
+﻿ @*@model IEnumerable<ApsMind.Olympiad.Framework.Entity.UserProfileView>*@
+@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+
+}
+<div class="page-header" style="min-height:520px">
+    <h1 style="text-align:center">Welcome Silver Zone<small></small></h1>
+</div>
+
+@*<script src="~/assets/js/jsapi.js"></script>
+<script src="~/assets/js/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['bar']}]}"></script>*@
+
+@*<div>
+    <label>Get Full Report</label>
+    <input type="button" id="btnSalesReport" class="btn btn-coffee btn-sm" value="Sales Report" />
+
+    <div id="dialog">  </div>
+    <div id="dialog1"> </div>
+</div>*@
+
+
+@*<script>
+    $(document).ready(function () {
+        $('#btnSalesReport').on('click', function () {
+            drawBarChart();
+        });
+
+        function drawBarChart() {
+            $.ajax({
+                type: 'GET',
+                contentType: 'application/json; charset=utf-8',
+                url: '/Home/UserProfileReport',
+                dataType: "json",
+                success: function (result) {
+                  
+                    alert(JSON.stringify(result));
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'User');
+                    data.addColumn('number', 'ActiveUser');
+                    data.addColumn('number', 'InActiveUser');
+                    $.each(result, function (i, d) {
+                        data.addRow([result[i].User, result[i].ActiveUser, result[i].InActiveUser]);
+                    });
+                    var options = {
+                        chart: {
+                            title: 'User',
+                            subtitle: 'ActiveUser'
+                        },
+                        bars: 'vertical'
+                    };
+                    $("#dialog").append($('<div id="salesReport" style="width: 400px; height: 500px;"> </div>'));
+                    $("#dialog1").append($('<div><input type="button" class="btn btn-coffee btn-sm" value="Close" onclick="javascript: CloseReport();" />' + ' </div>'));
+                    var chart = new google.charts.Bar(document.getElementById('dialog'));
+                    chart.draw(data, options);
+                },
+                error: function (data) {
+                    alert("Error In getting Records");
+                }
+            });
+        }
+    });
+</script>
+
+<script>
+    function CloseReport() {
+        $("#dialog").remove();
+        $("#dialog1").remove();
+    }
+</script>*@
+

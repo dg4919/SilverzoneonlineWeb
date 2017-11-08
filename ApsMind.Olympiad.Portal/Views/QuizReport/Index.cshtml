@@ -1,0 +1,111 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.QReport
+
+@{
+    ViewBag.Title = "Index";
+    WebGrid grid = new WebGrid(Model.QDetailList, rowsPerPage: 10);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+}
+<style>
+    .excelImg {
+        position: absolute;
+        right: 10%;
+        top: 10%;
+    }
+</style>
+<div class="mar">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Test Paper Report</h2>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><i class="fa fa-plus"></i> Total Test Paper</div>
+                <div class="panel-body">@Model.iTestPaperCount</div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-success">
+                <div class="panel-heading"><i class="fa fa-apple"></i> I-phone</div>
+                <div class="panel-body">@Model.iPhoneUserCount</div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-info">
+                <div class="panel-heading"><i class="fa fa-android"></i> Android</div>
+                <div class="panel-body">@Model.iAndroidUserCount</div>
+            </div>
+        </div>
+
+    </div>
+    <br />
+    @if (TempData["Message"] != null)
+    {
+        <div>
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>@TempData["Message"].
+            </div>
+
+        </div>
+    }
+
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.Raw(ViewBag.Message)
+        <div class="page-header col-sm-12">
+            <div class="row srchQuestion">
+                <div class="col-lg-3">
+                    <input type="text" name="TestPaperName" value="@ViewBag.TestPaperName" placeholder="Test Paper Name" class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <input type="hidden" name="DeviceType" value="@ViewBag.DeviceType" class="form-control">
+                </div>
+                <div class="col-lg-3">
+                    <button type="submit" class="btn btn-primary" style="width: 100px; height: 30px">Search Now</button>
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+    }
+
+    @Html.Raw(ViewBag.Message)
+
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="iPhoneTabColor @(ViewBag.DeviceType == 1 ? "active" : "")"><a href="/QuizReport/Index?deviceType=1" aria-controls="ProductGridview"><i class="fa fa-apple"></i>I-Phone</a></li>
+            <li role="presentation" class="androidTabColor @(ViewBag.DeviceType == 2 ? "active" : "")"><a href="/QuizReport/Index" aria-controls="Productview"><i class="fa fa-android"></i>Android-Phone</a></li>
+        </ul>
+
+        <div class="cstmTbl">
+            @grid.GetHtml(
+            tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                    //show empty row when there is only one record on page to it will display all empty rows there.
+            headerStyle: "header", //applying style.
+            footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+            firstText: "<< First",
+            previousText: "< Prev",
+            nextText: "Next >",
+            lastText: "Last >>",
+            columns: new[]  // colums in grid
+            {
+                grid.Column("QuizName","Paper Name"),
+                grid.Column("UserCount", "User Played"),
+                grid.Column("Played User View",format: (item) => @Html.ActionLink("View", "View", new { QuizID = item.QuizId }), style: "webGridIcon"),
+
+    })
+
+        </div>
+    </div>
+
+</div>

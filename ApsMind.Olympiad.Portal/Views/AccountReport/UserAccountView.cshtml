@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ApsMind.Olympiad.Framework.Entity.UserAccountView>
+
+@{
+
+    WebGrid grid = new WebGrid(Model, rowsPerPage: 10);
+    ViewBag.Title = "UserAccountView";
+
+}
+<div class="mar">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">User Acccount View</h2>
+
+            </div>
+        </div>
+    </div>
+    <span style="font-size:large;float:right; color:black">
+        Total Price:-@ViewBag.TotalAmount
+    </span>
+    <br />
+    <div class="col-sm-12">
+        <div class="cstmTbl">
+            @grid.GetHtml(
+        tableStyle: "table table-bordered table-responsive", // applying style on grid
+            fillEmptyRows: false,
+                    //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+    columns: new[]  // colums in grid
+    {
+
+
+         grid.Column("UserName", "User Name"),
+          grid.Column("QuizName","Quiz Name"),
+            grid.Column("Price","Price"),
+
+
+
+
+    })
+
+        </div>
+    </div>
+
+</div>

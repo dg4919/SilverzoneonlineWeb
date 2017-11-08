@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+@foreach(var item in ViewBag.Options)
+  {
+    
+<div class="row">
+    <div class="col-lg-12">
+        <div class="col-md-1">
+            <input type="radio" name="IsAnswer" onclick="setans()" @(item.IsAnswer == true ? "checked='checked'" : "") value="@item.IsAnswer" />
+        </div>
+        <div class="col-md-5">
+
+            <input type="text" name="optionText" value="@item.OptionText" class="form-control" />
+        </div>
+        <div class="col-md-4">
+
+            <input type="file" name="optionImage" value="@item.ImageUrl" />
+            
+        </div>
+        <div class="col-md-2">
+            <img src="~/Images/question_mark1.jpeg" style="width:50px;height:50px;" alt="optinImage" />
+            @if (item.ImageUrl == null)
+            {
+                <img src="~/Images/question_mark1.jpeg" width='50px' height='50px' style="border: 3px solid black" alt="Place your image here" />
+            }
+            else
+            {
+                <a>
+                    <img src="@item.ImageUrl" alt="Image" width='50px' height='50px' style="border:3px solid black" class="hov" />
+                </a>
+            }
+        </div>
+    </div>
+</div>
+
+}

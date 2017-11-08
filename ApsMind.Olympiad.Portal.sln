@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApsMind.Olympiad.Portal", "ApsMind.Olympiad.Portal\ApsMind.Olympiad.Portal.csproj", "{DE5B4DF9-1ACA-46DE-8CCC-705C62F7C5EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApsMind.Olympiad.Framework.Entity", "ApsMind.Olympiad.Framework.Entity\ApsMind.Olympiad.Framework.Entity.csproj", "{B7FE0AA9-B102-46B9-A922-3E2B20F00CE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApsMind.Olympaid.Framework", "ApsMind.Olympaid.Framework\ApsMind.Olympaid.Framework.csproj", "{EB727D82-7FA3-4D26-AF57-8D32DCDF3116}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{8A6D1B92-FF0C-4D1E-A44C-E88E2968EEBD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE5B4DF9-1ACA-46DE-8CCC-705C62F7C5EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5B4DF9-1ACA-46DE-8CCC-705C62F7C5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5B4DF9-1ACA-46DE-8CCC-705C62F7C5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5B4DF9-1ACA-46DE-8CCC-705C62F7C5EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7FE0AA9-B102-46B9-A922-3E2B20F00CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7FE0AA9-B102-46B9-A922-3E2B20F00CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7FE0AA9-B102-46B9-A922-3E2B20F00CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7FE0AA9-B102-46B9-A922-3E2B20F00CE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB727D82-7FA3-4D26-AF57-8D32DCDF3116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB727D82-7FA3-4D26-AF57-8D32DCDF3116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB727D82-7FA3-4D26-AF57-8D32DCDF3116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB727D82-7FA3-4D26-AF57-8D32DCDF3116}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

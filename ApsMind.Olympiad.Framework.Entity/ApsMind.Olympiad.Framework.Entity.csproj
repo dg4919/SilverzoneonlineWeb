@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B7FE0AA9-B102-46B9-A922-3E2B20F00CE4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApsMind.Olympiad.Framework.Entity</RootNamespace>
+    <AssemblyName>ApsMind.Olympiad.Framework.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountView.cs" />
+    <Compile Include="AnsSheetDetails.cs" />
+    <Compile Include="AnswerDetail.cs" />
+    <Compile Include="AnswerDetailAPI.cs" />
+    <Compile Include="AnswerSheet.cs" />
+    <Compile Include="AnswerSheetAPI.cs" />
+    <Compile Include="Cart.cs" />
+    <Compile Include="CategoryAPI.cs" />
+    <Compile Include="ChangePassword.cs" />
+    <Compile Include="Chapter.cs" />
+    <Compile Include="Country.cs" />
+    <Compile Include="DeviceType.cs" />
+    <Compile Include="FreeType.cs" />
+    <Compile Include="GenderType.cs" />
+    <Compile Include="Package.cs" />
+    <Compile Include="PackageDetails.cs" />
+    <Compile Include="PaperType.cs" />
+    <Compile Include="QuizViewModel.cs" />
+    <Compile Include="Role.cs" />
+    <Compile Include="State.cs" />
+    <Compile Include="StudentClass.cs" />
+    <Compile Include="Subject.cs" />
+    <Compile Include="TestPaper.cs" />
+    <Compile Include="TestPaperDetail.cs" />
+    <Compile Include="Topic.cs" />
+    <Compile Include="ErrorLog.cs" />
+    <Compile Include="FeedBack.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="ForgotPassword.cs" />
+    <Compile Include="ForgotPwdAPI.cs" />
+    <Compile Include="GCMidAPI.cs" />
+    <Compile Include="ImageBytes.cs" />
+    <Compile Include="InfoZone.cs" />
+    <Compile Include="Keyword.cs" />
+    <Compile Include="Instruction.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="LocationListView.cs" />
+    <Compile Include="LocationType.cs" />
+    <Compile Include="LoginModels.cs" />
+    <Compile Include="LogTypes.cs" />
+    <Compile Include="MultipleQuestion.cs" />
+    <Compile Include="Notes.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="PostNotification.cs" />
+    <Compile Include="QuestionOptionView.cs" />
+    <Compile Include="QuestionView.cs" />
+    <Compile Include="QuestionOption.cs" />
+    <Compile Include="Para.cs" />
+    <Compile Include="QuizDetail.cs" />
+    <Compile Include="Question.cs" />
+    <Compile Include="Quiz.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="QuizPaperMapping.cs" />
+    <Compile Include="QuizPurchaseOrder.cs" />
+    <Compile Include="QuizReport.cs" />
+    <Compile Include="Token.cs" />
+    <Compile Include="AddQuestionModel_Removed.cs" />
+    <Compile Include="TransDateAPI.cs" />
+    <Compile Include="UserAccountIphone.cs" />
+    <Compile Include="UserProfile.cs" />
+    <Compile Include="UserAccount.cs" />
+    <Compile Include="UserProfileEdit.cs" />
+    <Compile Include="UserProfileView.cs" />
+    <Compile Include="UserRole.cs" />
+    <Compile Include="VMSendMail.cs" />
+    <Compile Include="_CreateCustomeQuizRequest.cs" />
+    <Compile Include="_ViewAllQuestions.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

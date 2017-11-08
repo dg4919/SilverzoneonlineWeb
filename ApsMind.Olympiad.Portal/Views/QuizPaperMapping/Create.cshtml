@@ -1,0 +1,121 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.QuizPaperMapping
+
+@{
+    ViewBag.Title = "Create";
+    WebGrid grid = new WebGrid(ViewBag.TestPaperMapping, rowsPerPage: 10);
+    TimeZoneInfo est = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
+    var CUser = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.RoleId;
+
+}
+
+<div class="mar">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-title">
+                <h2 class="">Test Paper Mapping</h2>
+
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm())
+    {
+        @Html.Raw(ViewBag.Message)
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-horizontal">
+
+            <hr />
+            @*@Html.ValidationSummary(true)*@
+            @Html.HiddenFor(model => model.Id)
+            @if (CUser == 1)
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserId, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @Html.DropDownListFor(model => model.UserId, new SelectList(ViewBag.UserRole, "UserId", "UserName"), "--Select User --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.UserId)
+                    </div>
+                </div>
+            }
+            else
+            {
+
+                var Name = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.UserName;
+                <span style="font-size:x-large ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;UserName:-@Name</span>
+                <br />
+            }
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QuizId, new { @class = "control-label col-md-2 col-sm-3" })
+
+                <div class="col-md-4 col-sm-8 col-xs-12">
+                    @Html.DropDownListFor(model => model.QuizId, new SelectList(ViewBag.QuizeId, "QuizId", "QuizeName"), "--Select Test Paper --", new { @class = "form-control" })
+                    @*@Html.DropDownListFor(model => model.QuizId, new SelectList(ViewBag.QuizeId, "QuizId", "QuizName"), "--Select Test Paper --", new { @class = "form-control" })*@
+                    @Html.ValidationMessageFor(model => model.QuizId)
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                @if (CUser == 1)
+                {
+                    <div class="col-md-offset-5 col-md-1">
+                        <input type="submit" value="Save" class="btn btn-danger" name="command" />
+                    </div>
+                }
+                <div class=" col-md-4">
+                    <input type="submit" value="Search" class="btn btn-primary" name="Command" />
+                </div>
+
+            </div>
+        </div>
+
+    }
+    <br />
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="cstmTbl">
+                @grid.GetHtml(
+
+    tableStyle: "table table-bordered", // applying style on grid
+
+    fillEmptyRows: false,
+                        //show empty row when there is only one record on page to it will display all empty rows there.
+    headerStyle: "header", //applying style.
+        footerStyle: "grid-footer", //applying style.
+            mode: WebGridPagerModes.All, //paging to grid
+    firstText: "<< First",
+    previousText: "< Prev",
+    nextText: "Next >",
+    lastText: "Last >>",
+
+    columns: new[]  // colums in grid
+    {
+         grid.Column("Id","Id"),
+         grid.Column("QuizId","Test Paper"),
+        grid.Column("UserId","User Name"),
+
+          grid.Column("CreatedBy", "Created By"),
+
+
+           grid.Column("CreatedOn","Created On",format: (item) => TimeZoneInfo.ConvertTime(item.CreatedOn, est).ToString("dd MMM yyyy hh:mm tt")),
+
+             //grid.Column("Edit",format: (item) => @Html.ActionLink("Edit", "Create", new {Id=item.Id}), style: "webGridIcon"),
+             grid.Column( header :" ",format: (item) =>(@ViewBag.RoleId==1?@Html.ActionLink("Remove", "Remove", new { QuizPaperMappingId=item.Id }):@Html.DisplayName("")), style: "webGridIcon"),
+    })
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

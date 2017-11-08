@@ -1,0 +1,79 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.SerachAnsSheet
+
+@{
+    ViewBag.Title = "View";
+}
+
+<div class="row">
+    <div class="col-lg-3">
+        <span style="color:black">Total No Of Answer Sheet:-</span>
+        <span style="font-size:large;color:black">@ViewBag.TotalAnswer</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="page-title">
+            <h2 class="">Answersheet Details</h2>
+
+        </div>
+    </div>
+</div>
+<div class="row">
+    @foreach (var list in Model.ListQuestionView)
+    {
+
+
+        <div class="col-sm-12 question">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="caption">
+
+                        <h3 class="modal-title">Answer Sheet ID:-@list.AnswerSheetId</h3>
+                        @*<h4 class="text-theme modal-title">Quiz Paper Name:-@list.QuizId</h4>*@
+                        <table class="table-responsive table-bordered table-condensed table-striped cstm-table">
+                            <tr>
+                                <th class="text-theme">Class</th>
+                                <th class="text-theme">Quiz Name</th>
+
+                                <th class="text-theme">User Name</th>
+
+                                <th class="text-theme">Start Date</th>
+                                <th class="text-theme">End Date</th>
+                                <th class="text-theme">Option score</th>
+                                <th class="text-theme">Type</th>
+
+                            </tr>
+                            <tr>
+                                <td>
+                                    @list.ClassName
+                                </td>
+
+                                <td>
+                                    @list.QuizId
+                                </td>
+
+                                <td>
+                                    @list.UserId
+                                </td>
+                                <td>@list.StartDate</td>
+                                <td>@list.EndDate</td>
+                                <td>@list.OptainScore</td>
+                                <td>@list.FreeType</td>
+
+                            </tr>
+                        </table>
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
+

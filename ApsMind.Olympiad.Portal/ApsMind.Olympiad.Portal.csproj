@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE5B4DF9-1ACA-46DE-8CCC-705C62F7C5EA}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApsMind.Olympiad.Portal</RootNamespace>
+    <AssemblyName>ApsMind.Olympiad.Portal</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bottles">
+      <HintPath>..\packages\Bottles.1.0.0.443\lib\Bottles.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\DocumentFormat.OpenXml.1.0\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet">
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.3.0.13117\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core">
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.3.0.13117\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer">
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty">
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.3.0.13117\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuCore">
+      <HintPath>..\packages\FubuCore.1.0.0.225\lib\FubuCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuLocalization">
+      <HintPath>..\packages\FubuLocalization.0.9.5.146\lib\FubuLocalization.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Core">
+      <HintPath>..\packages\FubuMVC.Core.1.1.0.1542\lib\net40\FubuMVC.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Export">
+      <HintPath>..\packages\FubuMVC.Export.0.1.0.9\lib\net40\FubuMVC.Export.dll</HintPath>
+    </Reference>
+    <Reference Include="FubuMVC.Media">
+      <HintPath>..\packages\FubuMVC.Media.0.9.5.433\lib\net40\FubuMVC.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlTags">
+      <HintPath>..\packages\HtmlTags.1.1.0.119\lib\4.0\HtmlTags.dll</HintPath>
+    </Reference>
+    <Reference Include="MCPG.CCA.CCAVTil, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MCPG.CCA.CCAVTil.dll</HintPath>
+    </Reference>
+    <Reference Include="MCPG.CCA.Util">
+      <HintPath>..\MCPG.CCA.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.3.1.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.3.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.3.2.3\lib\net45\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.4.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.3\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.3\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.2.0.0\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.2.0.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.2.0.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.2.0.0\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.0.0\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddQuestionViewModel.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
+    <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
+    <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageAreaRegistration.cs" />
+    <Compile Include="Areas\HelpPage\HelpPageConfigurationExtensions.cs" />
+    <Compile Include="Areas\HelpPage\Models\HelpPageApiModel.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\HelpPageSampleKey.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ImageSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\InvalidSample.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\ObjectGenerator.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
+    <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
+    <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountReportController.cs" />
+    <Compile Include="Controllers\AnsSheetDetailController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ChapterController.cs" />
+    <Compile Include="Controllers\CustomAttribute.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
+    <Compile Include="Controllers\LocationController.cs" />
+    <Compile Include="Controllers\NewHomeController.cs" />
+    <Compile Include="Controllers\NotificationController.cs" />
+    <Compile Include="Controllers\CCAPaymentController.cs" />
+    <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
+    <Compile Include="Controllers\QuizPaperMappingController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InstructionController.cs" />
+    <Compile Include="Controllers\MethodsController.cs" />
+    <Compile Include="Controllers\ParaController.cs" />
+    <Compile Include="Controllers\QuestionOptionController.cs" />
+    <Compile Include="Controllers\QuizReportController.cs" />
+    <Compile Include="Controllers\QusetionController.cs" />
+    <Compile Include="Controllers\StudentClassController.cs" />
+    <Compile Include="Controllers\SubjectController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
+    <Compile Include="Controllers\UserprofileReportController.cs" />
+    <Compile Include="Controllers\UserReportController.cs" />
+    <Compile Include="Controllers\UserReportDeviceTypeController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Filters\SecureResourceAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handler\ImageHandler.cs" />
+    <Compile Include="Handler\MCPGCCAPayment.cs" />
+    <Compile Include="Models\AccountBindingModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminNotification.cs" />
+    <Compile Include="Models\ApplicationSession.cs" />
+    <Compile Include="Models\CCAPaymentModel.cs">
+      <CustomToolNamespace>MCPG.CCA.CCAPayment</CustomToolNamespace>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\NotesSummary.cs" />
+    <Compile Include="Models\TestPaperViewModel.cs" />
+    <Compile Include="Models\_ItemsInCart.cs" />
+    <Compile Include="Models\_PaymentHistory.cs" />
+    <Compile Include="Models\_QuizPurchased.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
+    <Compile Include="Results\ChallengeResult.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="WebAPIs\CartController.cs" />
+    <Compile Include="WebAPIs\CategoryController.cs" />
+    <Compile Include="WebAPIs\LocationAPIController.cs" />
+    <Compile Include="WebAPIs\CategoryAPIController.cs" />
+    <Compile Include="WebAPIs\OlympiadController.cs" />
+    <Compile Include="WebAPIs\QuizeController.cs" />
+    <Compile Include="WebAPIs\UserController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="assets\js\customeJs.js" />
+    <Content Include="assets\js\jquery-2.1.1.min.js" />
+    <Content Include="assets\js\jsapi.js" />
+    <Content Include="assets\js\testJson.js" />
+    <Content Include="assets\OlympaidCategory\CreateLocation.js" />
+    <Content Include="assets\OlympaidCategory\createQuestioncategory.js" />
+    <Content Include="assets\OlympaidCategory\create_category.js" />
+    <Content Include="Content\availabletest.html" />
+    <Content Include="Content\blank.html" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\create-test.html" />
+    <Content Include="Content\custom-test.html" />
+    <Content Include="Content\emailTemplate\silver.png" />
+    <Content Include="Content\iio.html" />
+    <Content Include="Content\img\bg.png" />
+    <Content Include="Content\img\cards\mastercard.png" />
+    <Content Include="Content\img\cards\paypal.png" />
+    <Content Include="Content\img\cards\visa.png" />
+    <Content Include="Content\img\colorpicker\alpha.png" />
+    <Content Include="Content\img\colorpicker\hue.png" />
+    <Content Include="Content\img\colorpicker\saturation.png" />
+    <Content Include="Content\img\fileinput\loading.gif" />
+    <Content Include="Content\img\filetree\application.png" />
+    <Content Include="Content\img\filetree\code.png" />
+    <Content Include="Content\img\filetree\css.png" />
+    <Content Include="Content\img\filetree\db.png" />
+    <Content Include="Content\img\filetree\directory.png" />
+    <Content Include="Content\img\filetree\doc.png" />
+    <Content Include="Content\img\filetree\file.png" />
+    <Content Include="Content\img\filetree\film.png" />
+    <Content Include="Content\img\filetree\flash.png" />
+    <Content Include="Content\img\filetree\folder_open.png" />
+    <Content Include="Content\img\filetree\html.png" />
+    <Content Include="Content\img\filetree\java.png" />
+    <Content Include="Content\img\filetree\linux.png" />
+    <Content Include="Content\img\filetree\music.png" />
+    <Content Include="Content\img\filetree\pdf.png" />
+    <Content Include="Content\img\filetree\php.png" />
+    <Content Include="Content\img\filetree\picture.png" />
+    <Content Include="Content\img\filetree\ppt.png" />
+    <Content Include="Content\img\filetree\psd.png" />
+    <Content Include="Content\img\filetree\ruby.png" />
+    <Content Include="Content\img\filetree\script.png" />
+    <Content Include="Content\img\filetree\spinner.gif" />
+    <Content Include="Content\img\filetree\txt.png" />
+    <Content Include="Content\img\filetree\xls.png" />
+    <Content Include="Content\img\filetree\zip.png" />
+    <Content Include="Content\img\icheck\grey%402x.png" />
+    <Content Include="Content\img\icheck\grey.png" />
+    <Content Include="Content\img\icons\ajax-loader.gif" />
+    <Content Include="Content\img\icons\csv.png" />
+    <Content Include="Content\img\icons\google_play.png" />
+    <Content Include="Content\img\icons\ios.png" />
+    <Content Include="Content\img\icons\json.png" />
+    <Content Include="Content\img\icons\pdf.png" />
+    <Content Include="Content\img\icons\png.png" />
+    <Content Include="Content\img\icons\ppt.png" />
+    <Content Include="Content\img\icons\sql.png" />
+    <Content Include="Content\img\icons\txt.png" />
+    <Content Include="Content\img\icons\word.png" />
+    <Content Include="Content\img\icons\xls.png" />
+    <Content Include="Content\img\icons\xml.png" />
+    <Content Include="Content\img\ion\sprite-skin-flat.png" />
+    <Content Include="Content\img\jquery\resize-icon.png" />
+    <Content Include="Content\img\jqyery\resize-icon%402x.html" />
+    <Content Include="Content\img\loading.html" />
+    <Content Include="Content\img\logo-small.png" />
+    <Content Include="Content\img\logo-small1.png" />
+    <Content Include="Content\img\logo-white.png" />
+    <Content Include="Content\img\owl\AjaxLoader.gif" />
+    <Content Include="Content\img\owl\grabbing.png" />
+    <Content Include="Content\img\portfolio\analysis.png" />
+    <Content Include="Content\img\portfolio\app.png" />
+    <Content Include="Content\img\portfolio\cabin.png" />
+    <Content Include="Content\img\portfolio\cake.png" />
+    <Content Include="Content\img\portfolio\circus.png" />
+    <Content Include="Content\img\portfolio\game.png" />
+    <Content Include="Content\img\portfolio\info.png" />
+    <Content Include="Content\img\portfolio\leader.png" />
+    <Content Include="Content\img\portfolio\mytotes.png" />
+    <Content Include="Content\img\portfolio\reports.png" />
+    <Content Include="Content\img\portfolio\safe.png" />
+    <Content Include="Content\img\portfolio\submarine.png" />
+    <Content Include="Content\img\profile.png" />
+    <Content Include="Content\img\silver.png" />
+    <Content Include="Content\img\SilverZone_Logo.png" />
+    <Content Include="Content\inc\TimeCircles.css" />
+    <Content Include="Content\inc\TimeCircles.js" />
+    <Content Include="Content\index.html" />
+    <Content Include="Content\infozone.html" />
+    <Content Include="Content\InfoZone\About Hindi.txt" />
+    <Content Include="Content\InfoZone\About iFLO.txt" />
+    <Content Include="Content\InfoZone\About ilo.txt" />
+    <Content Include="Content\InfoZone\About ioM.txt" />
+    <Content Include="Content\InfoZone\About IOS.txt" />
+    <Content Include="Content\InfoZone\About ISSO.txt" />
+    <Content Include="Content\InfoZone\About ITHO.txt" />
+    <Content Include="Content\InfoZone\About SKGKO.txt" />
+    <Content Include="Content\InfoZone\aboutioel.txt" />
+    <Content Include="Content\InfoZone\ImportantDates.txt" />
+    <Content Include="Content\InfoZone\TermCondition.txt" />
+    <Content Include="Content\InfoZone\Aboutus.txt" />
+    <Content Include="Content\IOEL.html" />
+    <Content Include="Content\IOM.html" />
+    <Content Include="Content\IOS.html" />
+    <Content Include="Content\js\actions.js" />
+    <Content Include="Content\js\cbpAnimatedHeader.js" />
+    <Content Include="Content\js\classie.js" />
+    <Content Include="Content\js\freelancer.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\plugins.js" />
+    <Content Include="Content\js\plugins\bootbox.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap-colorpicker.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap-datepicker.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap-file-input.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap-select.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap-slider.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap-timepicker.min.js" />
+    <Content Include="Content\js\plugins\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\js\plugins\form\jquery.form.js" />
+    <Content Include="Content\js\plugins\icheck\icheck.min.js" />
+    <Content Include="Content\js\plugins\jquery\jquery-migrate.min.js" />
+    <Content Include="Content\js\plugins\jquery\jquery-ui.min.js" />
+    <Content Include="Content\js\plugins\jquery\jquery.js" />
+    <Content Include="Content\js\plugins\jquery\jquery.min.js" />
+    <Content Include="Content\js\plugins\mcustomscrollbar\jquery.mCustomScrollbar.min.js" />
+    <Content Include="Content\js\plugins\scrolltotop\scrolltopcontrol.js" />
+    <Content Include="Content\js\plugins\smartwizard\jquery.smartWizard-2.0.min.js" />
+    <Content Include="Content\js\wow.min.js" />
+    <Content Include="Content\mynotes.html" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\pay-failed.html" />
+    <Content Include="Content\pay-success.html" />
+    <Content Include="Content\emailTemplate\silverzone.html" />
+    <Content Include="Content\profile.html" />
+    <Content Include="Content\report-history.html" />
+    <Content Include="Content\reports.html" />
+    <Content Include="Content\slider\1.jpg" />
+    <Content Include="Content\slider\2.jpg" />
+    <Content Include="Content\slider\3.jpg" />
+    <Content Include="Content\slider\6.jpg" />
+    <Content Include="Content\slider\android.png" />
+    <Content Include="Content\slider\image.png" />
+    <Content Include="Content\slider\image_2.png" />
+    <Content Include="Content\slider\image_4.png" />
+    <Content Include="Content\slider\image_5.png" />
+    <Content Include="Content\slider\image_6.png" />
+    <Content Include="Content\slider\slide2.jpg" />
+    <Content Include="Content\slider\slide3.jpg" />
+    <Content Include="Content\slider\slide4.jpg" />
+    <Content Include="Content\slider\slide5.jpg" />
+    <Content Include="Content\slider\slide6.jpg" />
+    <Content Include="Content\slider\slide7.jpg" />
+    <Content Include="Content\slider\slide8.jpg" />
+    <Content Include="Content\slider\slide9.jpg" />
+    <Content Include="Content\test-result.html" />
+    <Content Include="Content\testdetail.html" />
+    <Content Include="Content\testpaper.html" />
+    <Content Include="Content\testzone.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\analysis.png" />
+    <Content Include="Images\banner.jpg" />
+    <Content Include="Images\bg.png" />
+    <Content Include="Images\calendar.png" />
+    <Content Include="Images\call.png" />
+    <Content Include="Images\customtest.png" />
+    <Content Include="Images\Eror.jpg" />
+    <Content Include="Images\Excel_Document_Icon%281%29.PNG" />
+    <Content Include="Images\facebook.png" />
+    <Content Include="Images\funzone.png" />
+    <Content Include="Images\googleplus.png" />
+    <Content Include="Images\icon_minus.png" />
+    <Content Include="Images\icon_plus.png" />
+    <Content Include="Images\infozone.png" />
+    <Content Include="Images\instant.png" />
+    <Content Include="Images\key.png" />
+    <Content Include="Images\leaderboard.png" />
+    <Content Include="Images\linkedin.png" />
+    <Content Include="Images\location.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\meter.png" />
+    <Content Include="Images\noimage.jpg" />
+    <Content Include="Images\notes.jpg" />
+    <Content Include="Images\notes.png" />
+    <Content Include="Images\pattern.png" />
+    <Content Include="Images\previouspaper.png" />
+    <Content Include="Images\question.png" />
+    <Content Include="Images\question_mark1.jpeg" />
+    <Content Include="Images\rupee.png" />
+    <Content Include="Images\samplepaper.png" />
+    <Content Include="Images\sendmail.png" />
+    <Content Include="Images\shopping.png" />
+    <Content Include="Images\sm-logo.png" />
+    <Content Include="Images\twitter.png" />
+    <Content Include="Images\Untitled-10.png" />
+    <Content Include="Images\user.png" />
+    <Content Include="Images\usertesti.png" />
+    <Content Include="Images\user_dash.png" />
+    <Content Include="Images\webmobile.png" />
+    <Content Include="Images\XL.jpg" />
+    <Content Include="Images\youtube.png" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="nlook\bootstrap\css\bootstrap.min.css" />
+    <Content Include="nlook\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="nlook\bootstrap\js\bootstrap.js" />
+    <Content Include="nlook\css\animate.css" />
+    <Content Include="nlook\css\blue.css" />
+    <Content Include="nlook\css\colors.css" />
+    <Content Include="nlook\css\flexslider.css" />
+    <Content Include="nlook\css\font-awesome.min.css" />
+    <Content Include="nlook\css\layout.css" />
+    <Content Include="nlook\css\nekoAnim.css" />
+    <Content Include="nlook\css\orange.css" />
+    <Content Include="nlook\css\sea-green.css" />
+    <Content Include="nlook\font-icons\custom-icons\css\custom-icons-ie7.css" />
+    <Content Include="nlook\font-icons\custom-icons\css\custom-icons.css" />
+    <Content Include="nlook\font-icons\custom-icons\font\custom-iconsc15a.svg" />
+    <Content Include="nlook\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="nlook\images\banner\banner_silverzone_1.jpg" />
+    <Content Include="nlook\images\banner\banner_silverzone_2.jpg" />
+    <Content Include="nlook\images\banner\banner_silverzone_3.jpg" />
+    <Content Include="nlook\images\banner\Banner_SilverZone_Online_2-04.jpg" />
+    <Content Include="nlook\images\banner\sz1.jpg" />
+    <Content Include="nlook\images\banner\sz2.jpg" />
+    <Content Include="nlook\images\banner\sz22.jpg" />
+    <Content Include="nlook\images\banner\sz3.jpg" />
+    <Content Include="nlook\images\banner\szab.jpg" />
+    <Content Include="nlook\images\bg.gif" />
+    <Content Include="nlook\images\bg.png" />
+    <Content Include="nlook\images\icon.png" />
+    <Content Include="nlook\images\neko-logo.png" />
+    <Content Include="nlook\images\news\award.jpg" />
+    <Content Include="nlook\images\news\main.jpg" />
+    <Content Include="nlook\images\news\nasa.jpg" />
+    <Content Include="nlook\images\news\uk.jpg" />
+    <Content Include="nlook\images\sil.jpg" />
+    <Content Include="nlook\images\slider\iflo.jpg" />
+    <Content Include="nlook\images\slider\main.jpg" />
+    <Content Include="nlook\images\sm-logo-2.png" />
+    <Content Include="nlook\images\sm-logo.png" />
+    <Content Include="nlook\images\theme-pics\bg.gif" />
+    <Content Include="nlook\images\theme-pics\bg.png" />
+    <Content Include="nlook\images\theme-pics\bn.png" />
+    <Content Include="nlook\images\theme-pics\home-girls.png" />
+    <Content Include="nlook\images\theme-pics\loader.gif" />
+    <Content Include="nlook\images\theme-pics\paralax-blue-1.jpg" />
+    <Content Include="nlook\images\theme-pics\paralax-blue-11.png" />
+    <Content Include="nlook\images\theme-pics\paralax-blue-2.jpg" />
+    <Content Include="nlook\images\theme-pics\paralax-blue-3.jpg" />
+    <Content Include="nlook\images\theme-pics\paralax-grey-2.jpg" />
+    <Content Include="nlook\images\theme-pics\paralax-grey-3.jpg" />
+    <Content Include="nlook\images\topper\1.png" />
+    <Content Include="nlook\images\user.png" />
+    <Content Include="nlook\js-plugin\animation-framework\animate.css" />
+    <Content Include="nlook\js-plugin\appear\jquery.appear.js" />
+    <Content Include="nlook\js-plugin\appear\nekoAnim.css" />
+    <Content Include="nlook\js-plugin\easing\jquery.easing.1.3.js" />
+    <Content Include="nlook\js-plugin\flexslider\flexslider.css" />
+    <Content Include="nlook\js-plugin\flexslider\jquery.flexslider-min.js" />
+    <Content Include="nlook\js-plugin\isotope\css\style.css" />
+    <Content Include="nlook\js-plugin\isotope\jquery.isotope.min.js" />
+    <Content Include="nlook\js-plugin\isotope\jquery.isotope.sloppy-masonry.min.js" />
+    <Content Include="nlook\js-plugin\jquery-ui\jquery-ui-1.8.23.custom.min.js" />
+    <Content Include="nlook\js-plugin\jquery\jquery.1.10.2.min.js" />
+    <Content Include="nlook\js-plugin\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="nlook\js-plugin\magnific-popup\magnific-popup.css" />
+    <Content Include="nlook\js-plugin\neko-contact-ajax-plugin\js\jquery.form.js" />
+    <Content Include="nlook\js-plugin\neko-contact-ajax-plugin\js\jquery.validate.min.js" />
+    <Content Include="nlook\js-plugin\neko-contact-ajax-plugin\php\image.html" />
+    <Content Include="nlook\js-plugin\neko-share-urls\generator.js" />
+    <Content Include="nlook\js-plugin\owl.carousel\owl-carousel\AjaxLoader.gif" />
+    <Content Include="nlook\js-plugin\owl.carousel\owl-carousel\grabbing.png" />
+    <Content Include="nlook\js-plugin\owl.carousel\owl-carousel\owl.carousel.css" />
+    <Content Include="nlook\js-plugin\owl.carousel\owl-carousel\owl.carousel.min-MODIFIED.js" />
+    <Content Include="nlook\js-plugin\owl.carousel\owl-carousel\owl.theme.css" />
+    <Content Include="nlook\js-plugin\owl.carousel\owl-carousel\owl.transitions.css" />
+    <Content Include="nlook\js-plugin\pageSlide\jquery.pageslide-custom.js" />
+    <Content Include="nlook\js-plugin\pageSlide\jquery.pageslide.css" />
+    <Content Include="nlook\js-plugin\parallax\js\jquery.localscroll-1.2.7-min.js" />
+    <Content Include="nlook\js-plugin\parallax\js\jquery.scrollTo-1.4.3.1-min.js" />
+    <Content Include="nlook\js-plugin\parallax\js\jquery.stellar.min.js" />
+    <Content Include="nlook\js-plugin\respond\respond.min.js" />
+    <Content Include="nlook\js\bootstrap.js" />
+    <Content Include="nlook\js\custom.js" />
+    <Content Include="nlook\js\jquery.1.10.2.min.js" />
+    <Content Include="nlook\js\jquery.appear.js" />
+    <Content Include="nlook\js\jquery.easing.1.3.js" />
+    <Content Include="nlook\js\jquery.flexslider-min.js" />
+    <Content Include="nlook\js\jquery.magnific-popup.min.js" />
+    <Content Include="nlook\js\jquery.pageslide-custom.js" />
+    <Content Include="nlook\js\modernizr-2.6.1.min.js" />
+    <Content Include="nlook\slick\ajax-loader.gif" />
+    <Content Include="nlook\slick\fonts\slick.svg" />
+    <Content Include="nlook\slick\slick-theme.css" />
+    <Content Include="nlook\slick\slick.css" />
+    <Content Include="nlook\slick\slick.js" />
+    <Content Include="nlook\slick\slick.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\HelpPage\Views\Web.config" />
+    <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Index.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\TextSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Samples.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\Parameters.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\InvalidSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ImageSample.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
+    <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Content\InfoZone\ck.pem" />
+    <Content Include="nlook\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="nlook\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="nlook\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="nlook\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="nlook\bootstrap\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="nlook\font-icons\custom-icons\font\custom-iconsc15a.eot" />
+    <Content Include="nlook\font-icons\custom-icons\font\custom-iconsc15a.ttf" />
+    <Content Include="nlook\font-icons\custom-icons\font\custom-iconsc15a.woff" />
+    <Content Include="nlook\fonts\et-line.eot" />
+    <Content Include="nlook\fonts\et-line.ttf" />
+    <Content Include="nlook\fonts\et-line.woff" />
+    <Content Include="nlook\fonts\fontawesome-webfont.eot" />
+    <Content Include="nlook\fonts\fontawesome-webfont.ttf" />
+    <Content Include="nlook\fonts\fontawesome-webfont.woff" />
+    <Content Include="nlook\fonts\fontawesome-webfont.woff2" />
+    <Content Include="nlook\fonts\FontAwesome.otf" />
+    <Content Include="nlook\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="nlook\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="nlook\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="nlook\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="nlook\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="nlook\images\banner\Thumbs.db" />
+    <Content Include="nlook\images\theme-pics\Thumbs.db" />
+    <Content Include="nlook\images\Thumbs.db" />
+    <Content Include="nlook\slick\config.rb" />
+    <Content Include="nlook\slick\fonts\slick.eot" />
+    <Content Include="nlook\slick\fonts\slick.ttf" />
+    <Content Include="nlook\slick\fonts\slick.woff" />
+    <Content Include="nlook\slick\slick-theme.less" />
+    <Content Include="nlook\slick\slick-theme.scss" />
+    <Content Include="nlook\slick\slick.less" />
+    <Content Include="nlook\slick\slick.scss" />
+    <None Include="Properties\PublishProfiles\Newolmpaid.pubxml" />
+    <None Include="Properties\PublishProfiles\Olympaid.pubxml" />
+    <None Include="Properties\PublishProfiles\silverzonementor.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\UserProfile\Create.cshtml" />
+    <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\UserProfile\Edit.cshtml" />
+    <Content Include="Views\Account\Login1.cshtml" />
+    <Content Include="Views\Quiz\Create.cshtml" />
+    <Content Include="Views\Quiz\Index.cshtml" />
+    <Content Include="Views\Qusetion\QuizPrint.cshtml" />
+    <Content Include="Views\Para\Create.cshtml" />
+    <Content Include="Views\Para\Index.cshtml" />
+    <Content Include="Views\Instruction\Create.cshtml" />
+    <Content Include="Views\Instruction\Index.cshtml" />
+    <Content Include="Views\QuestionOption\Create.cshtml" />
+    <Content Include="Views\QuestionOption\Index.cshtml" />
+    <Content Include="Views\Quiz\QuestionDetails.cshtml" />
+    <Content Include="Views\Quiz\ViewQuestion.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Error\Global.cshtml" />
+    <Content Include="Views\Error\CustomError.cshtml" />
+    <Content Include="Views\Qusetion\AddParaGraph.cshtml" />
+    <Content Include="Views\Qusetion\Create.cshtml" />
+    <Content Include="Views\Qusetion\OptionTextBox.cshtml" />
+    <Content Include="Views\QuizPaperMapping\Create.cshtml" />
+    <Content Include="Views\Home\PiChart.cshtml" />
+    <Content Include="Views\Shared\View1.cshtml" />
+    <Content Include="Views\FeedBack\Index.cshtml" />
+    <Content Include="Views\AnsSheetDetail\Index.cshtml" />
+    <Content Include="Views\UserReport\Index.cshtml" />
+    <Content Include="Views\UserReport\View.cshtml" />
+    <Content Include="Views\UserReport\UserAccountView.cshtml" />
+    <Content Include="Views\Home\paysuccess.cshtml" />
+    <Content Include="Views\Home\payfailed.cshtml" />
+    <Content Include="Views\UserReportDeviceType\Index.cshtml" />
+    <Content Include="Views\UserReportDeviceType\IPhoneUser.cshtml" />
+    <Content Include="Views\UserReportDeviceType\UserAccountView.cshtml" />
+    <Content Include="Views\AccountReport\Index.cshtml" />
+    <Content Include="Views\AccountReport\IPhoneUser.cshtml" />
+    <Content Include="Views\AccountReport\UserAccountView.cshtml" />
+    <Content Include="Views\AccountReport\View.cshtml" />
+    <Content Include="Views\Location\Create.cshtml" />
+    <Content Include="Views\Location\Index.cshtml" />
+    <Content Include="Views\QuizReport\Index.cshtml" />
+    <Content Include="Views\QuizReport\IPhoneUser.cshtml" />
+    <Content Include="Views\Notification\Create.cshtml" />
+    <Content Include="Views\Notification\Index.cshtml" />
+    <Content Include="Views\QuizReport\View.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Qusetion\GetPrint.cshtml" />
+    <Content Include="Views\Qusetion\Index.cshtml" />
+    <Content Include="Views\NewHome\Index.cshtml" />
+    <Content Include="Views\Account\UserLogin.cshtml" />
+    <Content Include="Views\Shared\_LayoutNew.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\TestZone.cshtml" />
+    <Content Include="Views\User\availabletest.cshtml" />
+    <Content Include="Views\User\testdetail.cshtml" />
+    <Content Include="Views\User\testpaper.cshtml" />
+    <Content Include="Views\User\customtest.cshtml" />
+    <Content Include="Views\User\createtest.cshtml" />
+    <Content Include="Views\User\infozone.cshtml" />
+    <Content Include="Views\User\reports.cshtml" />
+    <Content Include="Views\User\reporthistory.cshtml" />
+    <Content Include="Views\User\testresult.cshtml" />
+    <Content Include="Views\User\mynotes.cshtml" />
+    <Content Include="Views\User\CustomQuestionPaper.cshtml" />
+    <Content Include="Views\CCAPayment\makepayment.cshtml" />
+    <Content Include="Views\CCAPayment\makepayment - Copy.cshtml" />
+    <Content Include="Views\CCAPayment\paymentresponce.cshtml" />
+    <Content Include="Views\AccountReport\WebPayments.cshtml" />
+    <Content Include="Views\User\singleAccountReport.cshtml" />
+    <Content Include="Views\User\UserAccountReport.cshtml" />
+    <Content Include="Views\Topic\Create.cshtml" />
+    <Content Include="Views\Qusetion\AddTopic.cshtml" />
+    <Content Include="Views\Chapter\Create.cshtml" />
+    <Content Include="Views\Chapter\Index.cshtml" />
+    <Content Include="Views\Qusetion\AddChapter.cshtml" />
+    <Content Include="Views\Topic\Index.cshtml" />
+    <Content Include="Views\Subject\Create.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\User\UserProfile.cshtml" />
+    <Content Include="Views\Quiz\AddQuestion.cshtml" />
+    <Content Include="Views\Package\Index.cshtml" />
+    <Content Include="Views\Package\CreatePackage.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Quiz\CreatePackage.cshtml" />
+    <Content Include="Views\Quiz\_AddOption.cshtml" />
+    <Content Include="Views\Quiz\Edit.cshtml" />
+    <Content Include="Views\Quiz\Details.cshtml" />
+    <Content Include="Views\Qusetion\_AddOption.cshtml" />
+    <Content Include="Views\Chapter\Edit.cshtml" />
+    <Content Include="Views\StudentClass\Index.cshtml" />
+    <Content Include="Views\StudentClass\Create.cshtml" />
+    <Content Include="Views\StudentClass\Edit.cshtml" />
+    <Content Include="Views\Subject\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\InstructionImage\" />
+    <Folder Include="Images\ParaImage\" />
+    <Folder Include="Images\QuestionImage\" />
+    <Folder Include="Images\QuestionOptionImage\" />
+    <Folder Include="Images\UserImages\" />
+    <Folder Include="Notes\" />
+    <Folder Include="Views\UserprofileReport\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApsMind.Olympaid.Framework\ApsMind.Olympaid.Framework.csproj">
+      <Project>{eb727d82-7fa3-4d26-af57-8d32dcdf3116}</Project>
+      <Name>ApsMind.Olympaid.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApsMind.Olympiad.Framework.Entity\ApsMind.Olympiad.Framework.Entity.csproj">
+      <Project>{b7fe0aa9-b102-46b9-a922-3e2b20f00ce4}</Project>
+      <Name>ApsMind.Olympiad.Framework.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51677</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51668/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

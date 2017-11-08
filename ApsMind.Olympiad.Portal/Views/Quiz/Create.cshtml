@@ -1,0 +1,455 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.Quiz
+@using ApsMind.Olympiad.Framework.Entity
+@{
+    ViewBag.Title = "Create";
+    int value = 1;
+    var RoleID = ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.RoleId;
+
+  
+    // WebGrid grid = new WebGrid(ViewBag.QuestionList, rowsPerPage: 15);
+}
+<div class="mar">
+
+    <span>
+        <div id='myModal' class='modal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id='myModalContent'></div>
+                </div>
+            </div>
+
+        </div>
+        @*<div id='myModal' class='modal fade in'>
+            <div class="modal-dialog">
+                <div class="modal-content" style="height:500px;overflow-y:scroll;background:#f6f6f6;">
+                    <div id='myModalContent' style="padding-left:5px;" class="modal-body">
+                       
+                        @Html.Partial("AddQuestion", new Question())
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    </span>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="page-title">
+                <h2 class="">Add Test Paper</h2>
+
+            </div>
+        </div>
+    </div>
+    @if (TempData["DeleteQuestion"] != null)
+    {
+        <div>
+            <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Success!</strong>@TempData["DeleteQuestion"].
+            </div>
+            @*<span style="text-align:center; color:green;">@TempData["Message"]</span>*@
+        </div>
+    }
+    @using (Html.BeginForm())
+    {
+        @Html.Raw(ViewBag.Message)
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(model => model.QuizId)
+
+            <div id="testpaper">
+                <div class="row">
+       
+                          <div class="form-group">
+                              
+                                @Html.LabelFor(model => model.SubjectId, new { @class = "control-label col-md-2 col-sm-3" })
+                                
+                                <div class="col-md-4 col-sm-8 col-xs-12">
+                                    @Html.DropDownListFor(model=>model.SubjectId, new SelectList((SelectList)TempData["Subject"], "value", "text"), "--Select Subject--", new { @class = "form-control", @Id = "Subject" })
+                                     @Html.ValidationMessageFor(model => model.SubjectId, "", new { @class = "text-danger" }) 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Class<abbr title="required">*</abbr></label>
+                                    <div class="col-md-4 col-sm-8 col-xs-12">
+                                    @*@Html.DropDownList("subject", new SelectList(Model.SubjectId, "SubjectId", "SubjectName"), "--Select Subject--", new { @class = "form-control", @id = "subjectDropdown" })*@
+                                    @Html.DropDownList("Class", new SelectList(string.Empty, "Value", "Text"), "--Select Class--", new { @class = "form-control", @id = "classDropdown" })
+                                    @Html.ValidationMessageFor(model => model.ClassId, "", new { @class = "text-danger" }) 
+
+                                </div>
+                            </div>
+
+                        
+
+                </div>
+
+             
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QuizName, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @if (RoleID == 1)
+                        {
+                            @Html.TextBoxFor(model => model.QuizName, new { @class = "form-control", @maxlength = "50",@id="txtquizname" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.QuizName, new { @class = "form-control", @maxlength = "50", @disabled = "disabled",@id="txtquizname"  })
+                        }
+                        @Html.ValidationMessageFor(model => model.QuizName)
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.PaperTypeId, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @Html.DropDownListFor(model => model.PaperTypeId, new SelectList((SelectList)TempData["PaperType"], "value", "text"), "--Select--", new { @class = "form-control", @id="ptid" })
+                        @Html.ValidationMessageFor(model => model.PaperTypeId)
+                       
+                    </div>
+                   
+                    @*<div class="col-sm-2 col-xs-3 col-md-2">
+                            <a class="btn btn-success" id="btnCreate" onclick='$("#myModal").show()'>
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </a>
+
+                        </div>*@
+
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TotalTimeInSecond, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @Html.TextBoxFor(model => model.TotalTimeInSecond, new { @class = "form-control", @readonly = "readonly",@Value="3600" })
+                        @Html.ValidationMessageFor(model => model.TotalTimeInSecond)
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TotalScore, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @Html.TextBoxFor(model => model.TotalScore, new { @class = "form-control", @readonly = "readonly",@Value="100" })
+                        @Html.ValidationMessageFor(model => model.TotalScore)
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.FreeTypeId, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-4 col-sm-8 col-xs-12">
+                        @if (RoleID == 1)
+                        {
+
+                            @Html.DropDownListFor(model => model.FreeTypeId, new SelectList(ViewBag.FeeType, "KeywordValue", "KeywordText"), "--Select Free type--", new { @class = "form-control" })
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(model => model.FreeTypeId, new SelectList(ViewBag.FeeType, "KeywordValue", "KeywordText"), "--Select Free type--", new { @class = "form-control", @disabled = "disabled" })
+                            <input type="hidden" value="@Model.FreeTypeId" name="FreeTypeId" />
+                        }
+
+
+                        @Html.ValidationMessageFor(model => model.FreeTypeId)
+                    </div>
+                </div>
+
+                <div id="ChengeEvent1" hidden="hidden">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Price, new { @class = "control-label col-md-2 col-sm-3" })
+                        <div class="col-md-4 col-sm-8 col-xs-12">
+                            @Html.TextBoxFor(model => model.Price, new { @class = "form-control", @maxlength = "10", @type = "number" })
+                            @Html.ValidationMessageFor(model => model.Price)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsActive, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-10">
+                        @if (RoleID == 1)
+                        {
+                            @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked" })
+                        }
+                        else
+                        {
+                            @Html.CheckBoxFor(model => model.IsActive, new { @checked = "checked", @disabled = "disabled" })
+                        }
+
+
+                        @Html.ValidationMessageFor(model => model.IsActive)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsPublish, new { @class = "control-label col-md-2 col-sm-3" })
+                    <div class="col-md-10">
+                        @if (RoleID == 1)
+                        {
+                            @Html.CheckBoxFor(model => model.IsPublish, new { @checked = "checked" })
+                        }
+                        else
+                        {
+                            @Html.CheckBoxFor(model => model.IsPublish, new { @checked = "checked", @disabled = "disabled" })
+                        }
+
+
+                        @Html.ValidationMessageFor(model => model.IsPublish)
+                    </div>
+                </div>
+                <hr />
+            </div>
+         
+               @*@if (ApsMind.Olympiad.Portal.Models.ApplicationSession.CurrentUser.RoleId!= 3 && Model.IsPublish == true)
+                {
+
+                }*@
+
+            <div class="col-sm-2 col-xs-3">
+                @if (RoleID == 3 && Model.IsPublish == true)
+                {
+
+                }
+                else
+                {
+                    <a class="btn btn-success" id="btnCreate" onclick="setandshow();">
+                        Add Question  @*<span class="glyphicon glyphicon-plus"></span>*@
+                    </a>
+                }
+            </div>
+
+            <div class="clearfix"></div>
+            <hr />
+        
+        </div>
+      
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @if (RoleID == 3 && Model.IsPublish == true)
+                {
+
+                }
+                else
+                {
+                    <input type="submit" value="Save" id="CheckBoxSelected" class="btn btn-danger" />
+                }
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/OlympaidCategory/createQuestioncategory.js"></script>
+
+    <script type="text/javascript">
+        $('#btnResetCategory').on("click", function () {
+            $('#ParentCategoryId').val(0);
+            $('#showSelected').html('Root');
+            fillCategory(0);
+        });
+
+        function setandshow() {
+            //alert($('#StudentClass').val());
+            //alert($('#subjectDropdown').val());
+            //alert($('#ptid').val());
+            //return false;
+            debugger;
+            var URL = "/Quiz/AddQuestion?ClassId=" + $('#StudentClass').val() + "&SubjectId=" + $('#subjectDropdown').val() + "&PaperTypeId=" + $('#ptid').val() + '&QuizId=1';
+            prompt('', URL)
+            //return false;
+            $.ajax({
+                type: "GET",
+                url: URL,
+                contentType: "application/json; charset=utf-8",                
+                datatype: "json",
+                success: function (data) {
+                    debugger;
+                    $('#myModalContent').html(data);
+                   
+                    $("#myModal").show();
+               
+
+                },
+                error: function (error) {
+                    prompt("Title",JSON.stringify(error));
+                    alert(error);
+                }
+            });
+            //$.ajax({
+            //    url: "/Quiz/AddQuestion",
+            //    type: 'GET',
+            //    contentType: "application/json; charset=utf-8",
+            //    dataType: 'json',
+            //   async: false,
+            //    success: function (Result) {
+            //        alert(JSON.stringify(Result));
+            //        $("#myModal").show();
+
+            //        $('#showSelectedCategoryId').html($('#showSelected').html());
+
+            //        $('#SelectedParentCategoryId').val($('#ParentCategoryId').val());
+            //        $('#subjectid').val($('#ParentCategoryId').val());
+            //        $('#papertypeid').val($('#ptid').val());
+            //        $('#showclassid').html($('#ParentCategoryId').val());
+            //        $('#showpapertypeid').html($('#ptid').val());
+
+            //        alert($('#ParentCategoryId').val());
+            //        alert($('#ptid').val());
+            //    },
+            //    cache: false,
+            //    contentType: false,
+            //    processData: false
+            //});
+
+           
+        };
+    
+        function btnHide() {
+            $("#myModal").hide();
+
+        };
+
+        $(document).ready(function () {
+            var sel = $('#FreeTypeId').val();
+            if (sel == 2) {
+                $('#ChengeEvent1').show();
+            }
+            else if (sel == 1) {
+                $('#ChengeEvent1').hide();
+            }
+            $('#FreeTypeId').change(function () {
+                var sel = $(this).val();
+
+                if (sel == 2) {
+                    $('#ChengeEvent1').show();
+                }
+                else if (sel == 1) {
+                    $('#ChengeEvent1').hide();
+                }
+            });
+
+            $(window).load(function () {
+                $.ajax({
+                    url: "/Methods/BindFreeType",
+                    type: "get",
+                    success: function (data) {
+                        var opt1 = new Option("---Select---", 0);
+                        $('#ddlFreeTypeId').append(opt1);
+                        for (var i = 0; i < data.length; i++) {
+                            var opt = new Option(data[i].KeywordText, data[i].KeywordValue);
+                            $('#ddlFreeTypeId').append(opt);
+                        }
+
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $('#IsPublish').click(function(){
+            var checkStatus = $('#IsPublish').is(':checked');
+            if(checkStatus==true)
+            {
+                if (('#txtquizname').val()=='') {
+                    alert('Quiz Name is required.');
+                }
+            }
+           
+        });
+             
+    </script>
+<script type="text/javascript">
+    $(function () {
+
+       
+        debugger;
+        $('#Subject').on('change', function () {
+            debugger;
+            var classDropdown = $('#classDropdown');
+            //disable city drop down
+            classDropdown.prop('disabled', 'disabled');
+            //clear drop down of old city
+            classDropdown.empty();
+
+            //retrieve selected subject
+            var subject = $(this).val();
+            if (subject.length > 0) {
+                // retrieve data using a Url.Action() to construct url
+                $.getJSON('@Url.Action("GetClasses")', {
+                    id: subject
+                })
+                .success(function (data) {
+                    // prompt('', JSON.stringify(data));
+                    //re-enable city drop down
+                    classDropdown.removeProp('disabled');
+                    //for each returned state
+                    $('<option>').val('0').text("--Select Class--").appendTo("#classDropdown");
+                    $.each(data, function (i, classes) {
+                        //Create new option
+
+                        $('<option>').val(classes.StudentClassId).text(classes.ClassName).appendTo('#classDropdown');
+                        //var option = $('<option />').html(stdclass);
+                        ////append city states drop down
+                        //classDropdown.append(option);
+                    });
+                })
+                .fail(function (jqxhr, textStatus, error) {
+                    alert("something went wrong");
+                    var err = textStatus + ", " + error;
+                    console.log("Request Failed: " + err);
+                });
+            }
+        });
+    })
+</script>
+
+@*<script type="text/javascript">
+    $(function () {
+
+
+        debugger;
+        $('#StudentClass').on('change', function () {
+            debugger;
+            var subjectDropdown = $('#subjectDropdown');
+            //disable city drop down
+            subjectDropdown.prop('disabled', 'disabled');
+            //clear drop down of old city
+            subjectDropdown.empty();
+
+            //retrieve selected subject
+            var stdclass = $(this).val();
+            if (stdclass.length > 0) {
+                // retrieve data using a Url.Action() to construct url
+                $.getJSON('@Url.Action("GetSubjects")', {
+                    id: stdclass
+                })
+                .success(function (data) {
+                    // prompt('', JSON.stringify(data));
+                    //re-enable city drop down
+                    subjectDropdown.removeProp('disabled');
+                    //for each returned state
+                    $.each(data, function (i, subject) {
+                        //Create new option
+
+                        $('<option>').val(subject.SubjectId).text(subject.SubjectName).appendTo('#subjectDropdown');
+                        //var option = $('<option />').html(stdclass);
+                        ////append city states drop down
+                        //classDropdown.append(option);
+                    });
+                })
+                .fail(function (jqxhr, textStatus, error) {
+                    alert("something went wrong");
+                    var err = textStatus + ", " + error;
+                    console.log("Request Failed: " + err);
+                });
+            }
+        });
+    })
+</script>*@
+
+
+
+}

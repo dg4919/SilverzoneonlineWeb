@@ -1,0 +1,806 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs
+       ================================================== -->
+    <meta charset="utf-8">
+    <title>:: SilverZone Olympiads ::</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Mobile Specific Metas
+       ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+       ================================================== -->
+    <link type="text/css" rel="stylesheet" href="~/nlook/bootstrap/css/bootstrap.min.css">
+    <!-- web font  -->
+	
+    <link href="~/nlook/slick/slick.css" rel="stylesheet" />
+     <link href="~/nlook/slick/slick-theme.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800" rel="stylesheet" type="text/css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/nlook/css/flexslider.css" />
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/nekoAnim.css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/font-icons/custom-icons/css/custom-icons.css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/font-icons/custom-icons/css/custom-icons-ie7.css">
+    <!-- Custom css -->
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/layout.css">
+
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/blue.css">
+    <link type="text/css" rel="stylesheet" href="~/nlook/css/font-awesome.min.css">
+
+   
+    <script src="~/nlook/js/modernizr-2.6.1.min.js"></script>
+    <link rel="shortcut icon" href="~/nlook/images/icon.png">
+    <link rel="apple-touch-icon" href="~/nlook/images/icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/nlook/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/nlook/images/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/nlook/images/apple-touch-icon-144x144.png">
+   
+    <!--Start of Zendesk Chat Script-->
+    <script type="text/javascript">
+        window.$zopim || (function (d, s) {
+            var z = $zopim = function (c) { z._.push(c) }, $ = z.s =
+            d.createElement(s), e = d.getElementsByTagName(s)[0]; z.set = function (o) {
+                z.set.
+                _.push(o)
+            }; z._ = []; z.set._ = []; $.async = !0; $.setAttribute("charset", "utf-8");
+            $.src = "https://v2.zopim.com/?5BtMUOZGdzVEyBwpZAIR85MGJRVEQaCV"; z.t = +new Date; $.
+            type = "text/javascript"; e.parentNode.insertBefore($, e)
+        })(document, "script");
+    </script>
+    <!--End of Zendesk Chat Script-->
+</head>
+<body data-spy="scroll" data-target="#scrollTarget" data-offset="150" class="activateAppearAnimation">
+
+    <!-- Primary Page Layout
+       ================================================== -->
+    <!-- Preloader -->
+    <div id="preloader">
+        <div id="status">
+            <img src="~/nlook/images/theme-pics/loader.gif" alt="" />
+            <h1 class="noSubtitle" style="color:#4FAFC2;">Welcome Silverzone</h1>
+        </div>
+    </div>
+    <!-- Preloader -->
+    <!-- Primary Page Layout
+       ================================================== -->
+    <!-- globalWrapper -->
+    <div id="globalWrapper" class="localscroll">
+        <!-- header -->
+        <header id="mainHeader" class="navbar-fixed-top" role="banner">
+            <div class="container">
+                <nav class="navbar navbar-default scrollMenu" role="navigation">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="~/nlook/images/sm-logo.png" alt="silverzone" />
+                        </a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse" id="scrollTarget">
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="active"><a href="#home"><i class="fa fa-home"></i>Home</a> </li>
+                            <li><a href="#about"><i class="fa fa-info"></i>About</a> </li>
+                            <li><a href="#services"><i class="fa fa-file-text-o"></i>Features</a> </li>
+                            <li><a href="#news"><i class="fa fa-bullhorn" aria-hidden="true"></i>News</a> </li>
+							<li><a href="#winners"><i class="fa fa-trophy"></i>winners</a> </li>
+                            <!-- <li><a href="#date"><i class="icon-calendar"></i>Dates</a> </li>-->
+                            <li><a href="#Study"><i class="fa fa-book"></i>Study Material </a> </li>
+                            <li><a href="#contact"><i class="fa fa-phone"></i>Contact</a> </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- header -->
+        <!-- content -->
+        <section id="home" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 col-sm-6">
+                        <div class="flexslider" id="flexHome">
+                            <ul class="slides">
+                                <li>
+                                    <!--<h1>Welcome to Silverzone</h1>-->
+                                    <img src="~/nlook/images/banner/sz1.jpg" class="img-responsive">
+                                </li>
+                                <li>
+                                    <img src="~/nlook/images/banner/sz2.jpg" class="img-responsive">
+                                </li>
+                                <li>
+                                    <img src="~/nlook/images/banner/sz3.jpg" class="img-responsive">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-sm-6 col-md-6 log">
+                        <div class="" style="">
+                            <div class="omb_login">
+                                <h3 class="omb_authTitle text-center">Login<a href="#" style="color:#fff;"></a></h3>
+                                @*@Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+                                <p class="text-center" style="color:#fff">Or</p>*@
+                                <div class="row omb_row-sm-offset-3" id="LoginModal">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div id="div-forms">
+                                            <form class="omb_loginForm" id="login-form" action="" autocomplete="off" method="post">
+                                                <lable style="color:#fff;">UserName:</lable>
+                                                <div class="input-group">
+                                                    
+                                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                                    <input type="text" class="form-control" name="UserName" id="UserName" placeholder="user name" errormessage="Required" value="">
+                                                </div>
+                                                <span class="help-block"></span>
+                                                <lable style="color:#fff;">Password:</lable>
+                                                <div class="input-group">
+                                                   
+                                                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                    <input type="password" class="form-control" name="Password" id="Password" placeholder="Password" errormessage="Required" value="">
+                                                </div>
+                                                <div class=" col-md-12">
+                                                    @*<div class="col-xs-12 col-sm-4 col-xs-12" style="color:#fff;">
+                                                        <label class="checkbox" style="font-weight:normal">
+                                                            <input type="checkbox" value="remember-me">Remember Me
+                                                        </label>
+                                                    </div>*@
+                                                    <div class="col-xs-12 col-sm-4 ">
+                                                        <p class="omb_forgotPwd">
+                                                            <a href="#"></a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-4 ">
+                                                        <p class="omb_forgotPwd">
+                                                            <a href="#">Forgot password?</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-xs-12 col-sm-12">
+                                                   
+                                                    <button id="btnLogin" type="button" name="login-submit" class="btn btn-success  btblock col-sm-5 col-xs-12">Sign IN</button>
+
+                                                    <a class="btn btn-warning  btblock col-sm-5 col-md-offset-2 col-xs-12 " href="/Account/Register" >Sign Up</a>
+                                                </div>
+                                                <span id="spnSpinner"><i class="fa fa-spinner fa-spin fa-4x"></i></span>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- call to action -->
+        <section class="color4 slice" style="padding-top:20px;">
+            <div class="ctaBoxFullwidth">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+
+                            <h1 style="text-align:center"> SILVERZONE MENTOR...</h1>
+                            <h2 class="subTitle" style="font-size:18px;">Silverzone Mentor is all about supplementing your hard work with smart work as it aims to help young minds prepare for their Silverzone Olympiad exams</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- call to action -->
+
+        <section class="slice  color1" id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>About Silverzone Mentor</h1>
+                        <h2 class="subTitle">Digital Companion for Olympiad preparation</h2>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-6" data-nekoanim="fadeInLeftBig" data-nekodelay="200">
+                        <img src="~/nlook/images/banner/Banner_SilverZone_Online_2-04.jpg" alt="About" class="img-responsive">
+                    </div>
+                    <div class="col-sm-6" data-nekoanim="fadeInRightBig" data-nekodelay="400">
+                        <h3>Silverzone Mentor</h3>
+                        <p>
+                            Silverzone Mentor is all about supplementing your hard work with smart work as it aims to help young minds prepare for their Silverzone Olympiad exams.
+                        </p>
+                        <ul style="padding-left:5px;">
+                            <li> Readers friendly content of best possible quality</li>
+                            <li> Step-by step approach with lucid language </li>
+                            <li> Chapter-wise practice exercises with answers and explanations</li>
+                            <li> Fully solved previous years question papers</li>
+                            <li> Model test papers to assess yourself anytime, each time at your convenience only </li>
+                            <li> Custom test papers for unlimited practice </li>
+                            <li> Instant report and analysis on the click of a button </li>
+                        </ul>
+                        <p>We recommend it for every students who wants to cut a nitche for themselves in the world of competitive examination in a smart way</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="slice color4" id="services" data-nekoanim="fadeInUp" data-nekodelay="100" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>Silver zone Mentor Features</h1>
+                        <h2 class="subTitle">We are doing a work of things you might be interested in</h2>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="100">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-bars fa-3x"></i>
+                            <h2>Preparation Meter</h2>
+                            <p>Know your level of preparation for each subject for exams.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="200">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-file-text fa-3x"></i>
+                            <h2>Reports & Analysis</h2>
+                            <p>View your assessment sheets, marks compared against highest and average instantly.</p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="300">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-flag fa-3x"></i>
+                            <h2>Flag-Review Question</h2>
+                            <p>Prioritise your questions by marking them and do a last minute revision.</p>
+                        </article>
+                    </div>
+
+
+
+                </div>
+                <div class="row" style="margin-top:20px;">
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="400">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-file fa-3x"></i>
+                            <h2>Previous Year Papers</h2>
+                            <p>Know your overall and subject-wise preparation by solving our papers and know your strength and weakness.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="500">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-wrench fa-3x"></i>
+                            <h2>Custom Test </h2>
+                            <p>Customize and make your own choice and select topics you wish to include as per various difficulty levels.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="600">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-info fa-3x"></i>
+                            <h2>Info Zone/About  </h2>
+                            <p>Highlights important dates of examination so that you have it always restored at back of your mind.  </p>
+                        </article>
+                    </div>
+
+
+                </div>
+                <div class="row" style="margin-top:20px;">
+
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="700">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-book fa-3x"></i>
+                            <h2>Comprehensive Book</h2>
+                            <p>Boost your confidence by solving chapter-wise questions from the Comprehensive Book. You can attempt the questions multiple times to enhance your skills.</p>
+                        </article>
+                    </div>
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="800">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-repeat fa-3x"></i>
+                            <h2>Revision Test Paper </h2>
+                            <p>Habit of making silly mistakes, grammatical errors, calculation mistakes, not reading ‘NOT’- all of these can be solved by doing revision. </p>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 boxFeature " data-nekoanim="fadeInUp" data-nekodelay="900">
+                        <article class="boxFeature-2">
+                            <i class="fa fa-book fa-3x"></i>
+                            <h2>Excellence Guide’s Model</h2>
+                            <p> These papers serve as a boon for participants as these are the ultimate preparation tool for students. The digital version gives the students an option for attempting multiple times leading to better performance.</p>
+                        </article>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- Features -->
+
+        <section class="slice " id="news">
+
+            <div class="container imgHover">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Announcements and Updates</h1>
+                        <h2 class="subTitle">SilverZone Olympiads Latest Announcements   </h2>
+                    </div>
+                    <article class="col-sm-4 " data-nekoanim="fadeInLeftBig" data-nekodelay="100">
+                        <section class="imgWrapper">
+                            <img src="~/nlook/images/news/nasa.jpg" class="img-responsive" alt="silverzone" />
+                        </section>
+                        <div class="mediaHover">
+                            <div class="mask"></div>
+                            <div class="iconLinks">
+                                <a href="#" class="btn btn-sm"><i class="icon-right-open-mini"></i>show Photo Click here</a>
+                            </div>
+                        </div>
+                        <section class="newsText color4">
+                            <h3>Educational Excursion- NASA 2017 </h3>
+                            <p>Silverzone Olympiads Maths & Science Top Rank Winners on Educational trip to NASA </p>
+                        </section>
+                    </article>
+                    <article class="col-sm-4 " data-nekoanim="fadeInUpBig" data-nekodelay="100">
+                        <section class="imgWrapper">
+                            <img src="~/nlook/images/news/uk.jpg" class="img-responsive" alt="silverzone" />
+                        </section>
+                        <div class="mediaHover">
+                            <div class="mask"></div>
+                            <div class="iconLinks">
+                                <a href="#" class="btn btn-sm"><i class="icon-right-open-mini"></i>show Photo Click here</a>
+                            </div>
+                        </div>
+                        <section class="newsText color4">
+                            <h3> Educational Excursion- London 2017  </h3>
+                            <p>Silverzone English Olympiad Top Rank Winners in London,United Kingdom </p>
+                        </section>
+                    </article>
+                    <article class="col-sm-4" data-nekoanim="fadeInUpBig" data-nekodelay="100">
+                        <section class="imgWrapper">
+                            <img src="~/nlook/images/news/award.jpg" class="img-responsive" alt="silverzone" />
+                        </section>
+                        <div class="mediaHover">
+                            <div class="mask"></div>
+                            <div class="iconLinks">
+                                <a href="#" class="btn btn-sm"><i class="icon-right-open-mini"></i>show Photo Click here</a>
+                            </div>
+                        </div>
+                        <section class="newsText color4">
+                            <h3>SilverZone Awards - 11th August 2017 </h3>
+                            <p>3rd Level Silverzone Int. Awards Cermony 2016, New Delhi .</p>
+                        </section>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!--dates-->
+        <!--<section class="slice color1" id="date" >
+           <div class="container">
+              <div class="row text-left">
+                 <div class="col-lg-12">
+                    <h1>Silverzone Olympiad Dates</h1>
+                    <h2 class="subTitle">Silverzone Foundation </h2>
+                 </div>
+                 <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="100">
+                 <section class="newsText ">
+                       <h3>IIO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First Date</small><br>November  7th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second Date</small><br> November  30th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 31st August 2017.</h4>
+                          </div>
+
+                     </section>
+                 </article>
+               <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="300">
+                     <section class="newsText ">
+                       <h3>IOM 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>November 9th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> December 5th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                        </section>
+                 </article>
+                <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="500">
+                     <section class="newsText">
+                       <h3>IOS 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>November 15th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> December 6th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 31st August 2017.</h4>
+                          </div>
+                        </section>
+                 </article>
+                  <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="700">
+                    <div class="mediaHover">
+
+                    </div>
+                    <section class="newsText">
+                       <h3>IOEL 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>November 8th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> December 7th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                        </section>
+                 </article>
+                  <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="900">
+                    <div class="mediaHover">
+
+                    </div>
+                    <section class="newsText">
+                       <h3>IFLO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>December 19th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> January 24th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                        </section>
+                 </article>
+                   <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="1100">
+                   <section class="newsText ">
+                       <h3>SKGKO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>December 12th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> January 16th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                        </section>
+                 </article>
+                  <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="1300">
+                    <section class="newsText ">
+                       <h3>ABHO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>December 14th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> January 18th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                       </section>
+                 </article>
+                 <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="1500">
+                 <section class="newsText ">
+                       <h3>ITHO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>December 15th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> January 23th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                    </section>
+                 </article>
+                <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="1700">
+
+                    <section class="newsText">
+                       <h3>ISSO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>December 13th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> January 17th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                    </section>
+                 </article>
+                 <article class="col-sm-4 thumbnail color4 nekoAnim-invisible" data-nekoanim="fadeIn" data-nekodelay="1900">
+
+                    <section class="newsText ">
+                       <h3>IRAO 2017-18 Exam Date</h3>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>First date</small><br>December 20th</h4>
+                       </div>
+                       <div class="col-md-6">
+                          <h4 class="date"><small>Second date</small><br> January 29th</h4>
+                       </div>
+                       <div class="col-md-12">
+                          <h4 class="date"> Last date of registration is 30th September 2017.</h4>
+                          </div>
+                    </section>
+                 </article>
+
+
+
+
+              </div>
+           </div>
+        </section>-->
+        <!-- dates -->
+		
+        <!-- winners -->
+        <section class="color4 slice" id="winners" data-nekoanim="fadeInUp" data-nekodelay="100">
+		<div class="container">
+           <div class="row">
+                <div class="col-xs-12">
+                     <h1>Silverzone International Excursions </h1>
+                     <h2 class="subTitle">Grand Prize for Top Rank Olympiad Winners   </h2>
+					 
+                  </div>
+               
+                  <div class="regular slider slick-slider">
+                     <div class="col-md-3">
+                      <img  src="~/nlook/images/topper/1.png" class="img-responsive img-thumbnail"/> </div>
+                     <div class="col-md-3">
+                       <img src="~/nlook/images/topper/1.png" class="img-responsive img-thumbnail"/> </div>
+                     <div class="col-md-3">
+                       <img  src="~/nlook/images/topper/1.png" class="img-responsive img-thumbnail"/></div>
+                     <div class="col-md-3">
+                        <img  src="~/nlook/images/topper/1.png" class="img-responsive img-thumbnail"/></div>
+                     <div class="col-md-3">
+                       <img  src="~/nlook/images/topper/1.png" class="img-responsive img-thumbnail"/> </div>
+                      <div class="col-md-3">
+                       <img  src="~/nlook/images/topper/1.png" class="img-responsive img-thumbnail"/> </div>
+                  
+                  </div>
+                  </div>
+            </div>
+        </section>
+        <!-- winners -->
+
+        <section class="pricing slice color1" id="Study">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>Silverzone Olympiad Study Material </h1>
+                        <h2 class="subTitle">(For International Olympiad of English Language,Mathematics and Science) </h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="pricingBloc focusPlan" data-nekoanim="fadeInLeftBig" data-nekodelay="100">
+                            <h3 class="text-center"><span>Previous Year Papers (2014, 2015, 2016)</span></h3>
+                            <p>
+                                Previous year papers are of great help as by solving these test papers the students
+                                are encouraged to give exams confidently as they are aware about the pattern of the
+                                exam conducted in the previous year.
+                                These papers will also help to understand the syllabus, pattern and how the
+                                difficulty levels have evolved over the years. By solving these papers, the
+                                participants can find out their shortcomings and accordingly prepare for the current
+                                exam they wish to gain proficiency in this year.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="pricingBloc focusPlan " data-nekoanim="fadeInLeftBig" data-nekodelay="300">
+                            <h3 class="text-center"><span>Model Test Papers from Olympiad Excellence Guide</span></h3>
+                            <p>
+                                Digitalise form of Model Test Papers from Olympiad Excellence Guide help students understand the pattern of questions. The participants can practice with as many different papers as these are available now at our website. It is hoped that this practice will do wonders in the preparation for the actual examination. The papers are prepared on the pattern of actual tests so these papers are of great help to the students. The questions in these papers help the candidates know their weak and strong areas by practicing them over and over again.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mar">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="pricingBloc focusPlan" data-nekoanim="fadeInLeftBig" data-nekodelay="500">
+                            <h3 class="text-center"><span>Chapter-wise Questions from Comprehensive Book</span></h3>
+                            <p>
+                                For gaining expertism over such Olympiads held at National/International level, chapter-wise questions from comprehensive books are highly recommended. These questions are  beneficial to students as these enhance their ability to think wisely & act smart. It will give the participants comprehensive knowledge of subject according to the latest syllabus. These questions cover sample with answers & more features. Students participating in our examination can attempt these questions and attain a remarkable score.
+
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="pricingBloc focusPlan " data-nekoanim="fadeInLeftBig" data-nekodelay="700">
+                            <h3 class="text-center"><span>Free Sample Questions</span></h3>
+                            <p>
+                                Experience of interface, quality and type of questions can now be easily obtained
+                                by solving these free sample questions. Now the participants can easily
+                                test their knowledge and problem-solving skills. Each question in these samples
+                                has one best answer. These are well suited for students to try during their studies to
+                                check progress. The questions are comparatively easier than the real exam
+                                questions. The participants can attempt the questions multiple times to enhance
+                                their skills.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <div id="paralaxSlice4" data-stellar-background-ratio="0.5">
+            <div class="maskParent">
+                <div class="paralaxMask"></div>
+                <div class="paralaxText">
+                    <blockquote>Keep in touch with us</blockquote>
+                </div>
+            </div>
+        </div>
+        <section class="slice color4" id="contact" data-nekoanim="fadeInUp" data-nekodelay="100">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1 class="noSubtitle">Contact us</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.051851784521!2d77.18634511456712!3d28.56820564374131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1d84185aaaab%3A0xdadf7f483e76718a!2sSilverZone+Foundation!5e0!3m2!1sen!2sin!4v1488259162453" width="100%" height="300" frameborder="1" style="border:1;" allowfullscreen></iframe>
+                    </div>
+                    <form method="" action="" id="" role="">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Enter name" title="Please enter your name (at least 2 characters)" />
+                            </div>
+                            <div class="form-group">
+
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" title="Please enter a valid email address" />
+                            </div>
+                            <div class="form-group">
+
+                                <input name="phone" class="form-control required digits" type="tel" id="phone" size="30" value="" placeholder="Enter email phone" title="Please enter a valid phone number (at least 10 characters)">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+
+                                <textarea name="comment" class="form-control" id="comments" cols="3" rows="4" placeholder="Enter your message…" title="Please enter your message (at least 10 characters)"></textarea>
+                            </div>
+
+                        </div><div class="col-md-6 ">
+                            <div class="result"></div>
+                            <button name="submit" type="submit" class="btn btn-block" id="submit"> Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- content -->
+        <footer>
+            <section id="mainFooter">
+                <div class="container" id="footer">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="footerWidget " data-nekoanim="fadeIn" data-nekodelay="100">
+                                <img src="~/nlook/images/neko-logo.png" alt="latest Little Neko news" id="footerLogo">
+                                <p><a href="#" title="">Silverzone Foundation</a> which aims in promoting competitive awareness of academics in school children in India and abroad. Over the years we have been in the process of creating this awareness among the students and school authorities by organizing and conducting International Olympiads ! </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="footerWidget " data-nekoanim="fadeIn" data-nekodelay="300">
+                                <h3>Silverzone Foundation</h3>
+                                <address>
+                                    <p>
+                                        <i class="icon-location"></i>&nbsp;B-2, Ansal Chamber-II,Bhikaji Cama Place <br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;New Delhi-110066(India) <br>
+                                        <i class="icon-phone"></i>&nbsp;011-26166210-11-12 <br>
+                                    </p>
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </footer>
+        <section id="footerRights">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Copyright © 2017 <a href="http://www.silverzone.org/" target="blank">silverzone olympiads</a> / All rights reserved.</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="socialNetwork pull-right">
+                            <li>
+                                <a href="https://www.facebook.com/Olympiads.Asia" target="_blank" class="tips" title="follow me on Facebook"><i class="icon-facebook-1 iconRounded"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/SZOlympiads" class="tips" title="follow me on Twitter" target="_blank"><i class="icon-twitter-bird iconRounded"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/u/0/+SilverZoneFoundation" class="tips" target="_blank" title="follow me on Google+"><i class="icon-gplus-1 iconRounded"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/silverzone-foundation-042a77128/" class="tips" target="_blank" title="follow me on Linkedin"><i class="icon-linkedin-1 iconRounded"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/channel/UCVb34obnlNSQh8-vySH0Ssw" class="tips" target="_blank" title="follow me on youtube"><i class="icon-youtube iconRounded"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End footer -->
+    </div>
+    <!-- global wrapper -->
+    <!--================================================== -->
+
+
+    <script type="text/javascript" src="~/nlook/js/jquery.1.10.2.min.js"></script>
+
+    <!-- third party plugins  -->
+    <script type="text/javascript" src="~/nlook/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/nlook/js/jquery.easing.1.3.js"></script>
+
+    <script type="text/javascript" src="~/nlook/js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="~/nlook/js/jquery.magnific-popup.min.js"></script>
+
+    <script type="text/javascript" src="~/nlook/js/jquery.appear.js"></script>
+    <script type="text/javascript" src="~/nlook/js/jquery.pageslide-custom.js"></script>
+    <!-- Custom  -->
+    <script type="text/javascript" src="~/nlook/js/custom.js"></script>
+    <script type="text/javascript" src="~/assets/js/customeJs.js"></script>
+    @*<script src="~/nlook/slick/slick.js"></script>
+    <script src="~/nlook/slick/slick.min.js"></script>*@
+ 
+	  <script type="text/javascript">
+         $(document).on('ready', function() {
+             $(".regular").slick({
+                 dots: true,
+                 infinite: true,
+                 autoplay: false,
+                 speed: 2000,
+                 slidesToShow: 4,
+                 slidesToScroll: 1,
+                 responsive: [{
+                         breakpoint: 1024,
+                         settings: {
+                             slidesToShow: 2,
+                             slidesToScroll: 3,
+                             infinite: true,
+                             dots: true
+                         }
+                     },
+         
+                     {
+                         breakpoint: 600,
+                         settings: {
+                             slidesToShow: 2,
+                             slidesToScroll: 2
+                         }
+                     }, {
+                         breakpoint: 480,
+                         settings: {
+                             slidesToShow: 1,
+                             slidesToScroll: 1
+                         }
+                     }
+                 ]
+             });
+         
+         });
+      </script>
+    
+
+
+    <!-- Custom  -->
+</body>
+</html>
+

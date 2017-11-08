@@ -1,0 +1,238 @@
+
+Log: 
+11/16/2015 17:57:23
+Error Message:System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.Collections.ArrayList.get_Item(Int32 index)
+   at System.Collections.Specialized.NameObjectCollectionBase.KeysCollection.Get(Int32 index)
+   at System.Collections.Specialized.NameObjectCollectionBase.KeysCollection.get_Item(Int32 index)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart()
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 13:20:47
+Error Message:System.NullReferenceException: Object reference not set to an instance of an object.
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 658
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 13:23:02
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=23
+b=
+c=
+
+
+Log: 
+05/24/2016 13:23:02
+Error Message:System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 661
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 14:20:07
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=4
+b=
+c=
+
+
+Log: 
+05/24/2016 14:46:00
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127947
+b=
+c=
+
+
+Log: 
+05/24/2016 14:46:00
+Error Message:System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 662
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 14:47:43
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127947
+b=
+c=
+
+
+Log: 
+05/24/2016 14:59:52
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127947
+b=
+c=
+
+
+Log: 
+05/24/2016 14:59:52
+Error Message:System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 662
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 15:58:50
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127947
+b=
+c=
+
+
+Log: 
+05/24/2016 15:58:50
+Error Message:System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 662
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:02:12
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127947
+b=
+c=
+
+
+Log: 
+05/24/2016 16:02:12
+Error Message:System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 662
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:04:32
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127947
+b=
+c=
+
+
+Log: 
+05/24/2016 16:04:32
+Error Message:System.FormatException: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+   at System.Convert.FromBase64_Decode(Char* startInputPtr, Int32 inputLength, Byte* startDestPtr, Int32 destLength)
+   at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhoto(ImageBytes objImageBytes) in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 662
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:04:42
+Error Message:System.Exception: Exception of type 'System.Exception' was thrown.
+a=1127924
+b=
+c=
+
+
+Log: 
+05/24/2016 16:24:36
+Error Message:System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart() in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 734
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:28:41
+Error Message:System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart() in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 734
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:38:26
+Error Message:System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart() in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 734
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:44:04
+Error Message:System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart() in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 734
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 16:58:11
+Error Message:System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart() in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 734
+a=
+b=
+c=
+
+
+Log: 
+05/24/2016 17:04:59
+Error Message:System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at System.Data.Entity.Internal.LazyInternalContext.SaveChanges()
+   at System.Data.Entity.DbContext.SaveChanges()
+   at ApsMind.Olympiad.Portal.WebAPIs.UserController.UpdateUserPhotoForMultiPart() in d:\SilverZone 20160214\ApsMind.Olympiad.Portal\WebAPIs\UserController.cs:line 734
+a=
+b=
+c=
+

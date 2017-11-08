@@ -1,0 +1,81 @@
+﻿@model ApsMind.Olympiad.Framework.Entity.SerachAnsSheet
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="row">
+    @foreach (var list in Model.ListQuestionView)
+    {
+
+
+        <div class="col-sm-12 question">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="caption">
+                        <h3>Ans Sheet ID:-@list.AnswerSheetId</h3>
+                        <h4 class="text-theme">Quiz Paper Name:-@list.QuizId</h4>
+                        <table class="table-responsive table-bordered table-condensed table-striped cstm-table">
+                            <tr>
+                                <th class="text-theme">User Id</th>
+                                <th class="text-theme">Is Submited</th>
+                                <th class="text-theme">Start Date</th>
+                                <th class ="text-theme">End Date</th>
+                                <th class="text-theme">Option score</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @list.UserId
+                                </td>
+                                <td>@list.IsSubmitted</td>
+                                <td>@list.StartDate</td>
+                                <td>@list.EndDate</td>
+                                <td>@list.OptainScore</td>
+                            </tr>
+                       </table>
+
+                            <div class="row">
+                                <div class="optns col-md-12 text-center">
+                                    <table class="table-responsive table-bordered table-condensed table-striped">
+                                        <tr>
+                                            <th>Ans Sheet Id</th>
+                                            <th>Question Id</th>
+                                            <th>OptionID</th>
+                                            <th>Correct OptionID</th>
+                                        </tr>
+                                        @foreach (var list2 in list.AnsOption)
+                                        {
+
+                                            <tr>
+
+                                                <td>@list2.AnswerSheetId</td>
+
+
+                                                <td>@list2.QuestionId</td>
+
+
+                                                <td>@list2.OptionId</td>
+
+
+                                                <td>@list2.CorrectOptionId</td>
+                                            </tr>
+
+                                        }
+                                    </table>
+
+
+                                </div>
+                            </div>
+
+
+
+</div>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+
